@@ -22,12 +22,15 @@ GEM
     ethon (0.16.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
-    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (0.1.2)
     forwardable-extended (2.6.0)
+    google-protobuf (4.27.2-x86-linux)
+      bigdecimal
+      rake (>= 13)
     google-protobuf (4.27.2-x86_64-darwin)
       bigdecimal
       rake (>= 13)
@@ -94,6 +97,8 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    nokogiri (1.16.6-x86-linux)
+      racc (~> 1.4)
     nokogiri (1.16.6-x86_64-darwin)
       racc (~> 1.4)
     pathutil (0.16.2)
@@ -116,8 +121,9 @@ GEM
     rouge (4.3.0)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
-    sass-embedded (1.77.5-x86_64-darwin)
+    sass-embedded (1.77.5)
       google-protobuf (>= 3.25, < 5.0)
+      rake (>= 13)
     strscan (3.1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -131,6 +137,7 @@ GEM
     zeitwerk (2.6.16)
 
 PLATFORMS
+  x86-linux
   x86_64-darwin-23
 
 DEPENDENCIES
