@@ -16,7 +16,7 @@ timezone:
 
 title: The Glu Book # the main title
 
-tagline: The Glu Programming language # it will display as the sub-title
+tagline: The Glu Programming Language # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -61,7 +61,7 @@ pageviews:
 theme_mode: # [light | dark]
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: "../assets/img/favicons/apple-touch-icon.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -133,6 +133,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  docs:
+    output: true
 
 defaults:
   - scope:
@@ -152,6 +154,12 @@ defaults:
   - scope:
       path: ""
       type: tabs # see `site.collections`
+    values:
+      layout: page
+      permalink: /:title/
+  - scope:
+      path: ""
+      type: docs
     values:
       layout: page
       permalink: /:title/
