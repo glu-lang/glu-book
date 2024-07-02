@@ -4,7 +4,7 @@ title: The Book
 order: 0
 ---
 
-Bellow, every chapters of the Glu Programming Language Book.
+Below, every chapters of the Glu Programming Language Book.
 
 
 {% for category in site.docs[0].categories -%}
