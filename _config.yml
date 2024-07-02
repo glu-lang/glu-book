@@ -35,7 +35,7 @@ social:
     - https://github.com/glu-lang
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "../assets/img/favicons/apple-touch-icon.png"
+avatar: assets/img/favicons/apple-touch-icon.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
