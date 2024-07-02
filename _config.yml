@@ -81,7 +81,8 @@ collections:
     sort_by: order
   docs:
     output: true
-    sort_by: order
+    order:
+      - Chapters.md # Do not touch this file
 
 defaults:
   - scope:
