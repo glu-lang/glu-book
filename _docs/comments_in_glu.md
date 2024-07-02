@@ -3,8 +3,6 @@ title: Using Comments in Glu
 category: The Glu Basics
 ---
 
-# Using Comments in Glu
-
 Comments are an essential part of any programming language. They help make code more readable and maintainable by providing explanations and notes for future reference. In Glu, you can use single-line comments, multi-line comments, and nested comments.
 
 ## Single-Line Comments
