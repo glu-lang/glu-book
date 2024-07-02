@@ -10,10 +10,17 @@ overloadable. Operators are listed alongside their precedences.
 
 | Operator | Example  | Explanation | Overloadable |
 |----------|----------|-------------|--------------|
-| `.` | `expr . ident` | access to a member of a struct | false |
-| `.*` | `expr .* ident`  | access to a member of a struct after dereferencing | false |
-| `:` | `ident : type` | specify type | false |
+| `.` | `expr . ident` | Access to a member of a struct | false |
+| `!` | `expr!` | Bitwise or logical complement | true |
+| `%` | `expr % expr` | Arithmetic remainder | true |
+| `%` | `var %= expr` | Arithmetic remainder and assignement | true |
+| `!=` | `expr != expr` | Nonequality comparison | true |
+| `.*` | `expr .* ident`  | Access to a member of a struct after dereferencing | false |
+| `:` | `ident : type` | Specify type | false |
 | `&` | `&expr` | Borrow | false |
+| `&` | `expr & expr` | Bitwise And | true |
+| `&=` | `&expr` | Borrow | true |
+| `&&` | `expr && expr` | Short-circuiting logical AND | true |
 | `*` | `*expr` | Dereference | true |
 | `*` | `let ident: *type` | Raw pointer | false |
 | `*` | `expr * expr` | Arithmetic multiplication | true |
@@ -26,11 +33,21 @@ overloadable. Operators are listed alongside their precedences.
 | `-` | `expr - expr` | Arithmetic substraction | true |
 | `-=` | `var - expr` | Arithmetic substraction and assignement | true |
 | `==` | `expr == expr` | Equality comparison | true |
-| `&&` | `expr && expr` | Short-circuiting logical AND | true |
 | `\|\|` | `expr \|\| expr` | Short-circuiting logical OR | true |
 | `>` | `expr > expr` | Greater then comparison | true |
 | `>=` | `expr >= expr` | Greater then comparison or equal | true |
 | `<` | `expr < expr` | Lesser then comparison | true |
 | `<=` | `expr <= expr` | Lesser then or equal comparison | true |
 | `->` | `fn(...) -> type` | Function type | false |
-| `!` | `expr!` | Bitwise or logical complement | true |
+| `..` | `.., expr.., ..expr, expr..expr` | Right-inclusive range literal | false |
+| `..<` | `..<expr, expr..<expr` | Right-inclusive range literal | false |
+| `<<` | `expr << expr` | Left-shift | true |
+| `<<=` | `var <<= expr` | Left-shift and assignement | true |
+| `>>` | `expr >> expr` | Right-shift | true |
+| `>>=` | `var >>= expr` | Right-shift and assignement | true |
+| `^` | `expr ^ expr` | Bitwise exclusive OR | true |
+| `^=` | `var ^= expr` | Bitwise exclusive OR and assignment | true |
+| `\|` | `expr \| expr` | Bitwise OR | true |
+| `\|=` | `var \|= expr` | Bitwise OR and assignement | true |
+| `;` | `expr;` | statement terminator | false |
+| `,` | `expr, expr` | Argument and elements separator | false |
