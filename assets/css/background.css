@@ -1,0 +1,64 @@
+body {
+  position: relative;
+}
+
+#background {
+  background-color: blue;
+  position: absolute;
+}
+
+.ellipse {
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+  filter: blur(60px);
+  position: absolute;
+  content: '';
+}
+
+.ellipse-purple {
+  width: 600px;
+  height: 600px;
+  background: rgba(118, 181, 245, 1);
+  top: -20vh;
+  left: 5vw;
+  filter: blur(40px);
+}
+
+.ellipse-pink {
+  width: 600px;
+  height: 600px;
+  background: rgba(66, 115, 165, 0.7);
+  top: 7vh;
+  left: -5vw;
+}
+
+.ellipse-orange {
+  background: rgba(198, 186, 162);
+  top: 55vh;
+  left: 25vw;
+}
+
+.ellipse-purple-2 {
+  background: #9d96e49c;
+  top: 55vh;
+  left: 42vw;
+}
+
+@media (min-width: 850px) {
+  #background {
+    left: 150px;
+  }
+}
+
+body #main-wrapper .container header {
+  background-color: transparent;
+}
+
+footer {
+  background-color: transparent;
+}
