@@ -3,8 +3,6 @@ title: Variables
 category: Common Concepts
 ---
 
-Here's the revised version of your text:
-
 ## The Concept of Variables
 
 One of the most basic programming concepts is variables. Often, a programmer needs to bind a value to a name, but the mutability of this variable is a crucial consideration. Some languages default to making variables either mutable or immutable. Let's explore how and why Glu does not have a default case by distinguishing between these two types of variables.
