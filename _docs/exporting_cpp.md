@@ -1,8 +1,6 @@
 ---
 title: Export a Glu Library to C++
-author: Emil
-categories: [The Glu Basics]
-order: 105
+category: Understanding Imports and Namespaces
 ---
 
 # Export a Glu Library to C++

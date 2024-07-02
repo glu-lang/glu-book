@@ -1,8 +1,6 @@
 ---
 title: Writing a Hello World in Glu
-author: Emil
-categories: [The Glu Basics]
-order: 102
+category: The Glu Basics
 ---
 
 # Hello World in Glu

@@ -1,7 +1,6 @@
 ---
 title: Import a C++ Library in Glu
-categories: [The Glu Basics]
-order: 105
+category: Understanding Imports and Namespaces
 ---
 
 # Import a C++ Library in Glu
@@ -48,7 +47,7 @@ touch main.glu
 Open the `main.glu` file in a text editor and add the following code.
 
 ```glu
-import liba
+import liba;
 
 func main() {
     liba::funcA();
