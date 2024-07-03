@@ -3,8 +3,8 @@ title: Declare constants or variables
 category: Common Concepts
 ---
 
-One of the most basic programming concepts is variables. Every programmer use at least one variable in his program and this for many different usage.
-But depending on the context, it is important for the programmer to keep control on the immutability of his variable.
+One of the most basic programming concepts is the notion of variable. There is at least one variable in every program and they have many use cases.
+But depending on the context, it is important to keep control on the mutability of a value.
 
 ## Declare a constant in Glu
 
