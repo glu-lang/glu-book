@@ -16,18 +16,17 @@ overloadable. Operators are listed alongside their precedences.
 |----------|----------|-------------|--------------|
 | `.` | `expr . ident` | Access to a member of a struct | false |
 | `!` | `!expr` | Bitwise or logical complement | true |
-| `? :` | `pat ? pat : pat` | Ternary pattern | true |
+| `? :` | `pat ? pat : pat` | Ternary pattern | false |
 | `%` | `expr % expr` | Arithmetic remainder | true |
 | `%` | `var %= expr` | Arithmetic remainder and assignement | true |
 | `!=` | `expr != expr` | Nonequality comparison | true |
 | `.*` | `expr.*`  | Dereference | true |
 | `:` | `ident : type` | Specify type | false |
-| `:` | `pat ? pat : pat` | delimiter in ternary pattern | false |
 | `&` | `&expr` | Borrow | false |
 | `&` | `expr & expr` | Bitwise And | true |
-| `&=` | `&expr` | Borrow | true |
+| `&=` | `&expr` | Bitwise And and assignement | true |
 | `&&` | `expr && expr` | Short-circuiting logical AND | true |
-| `*` | `let ident: *type` | Raw pointer | false |
+| `*` | `*type` | Raw pointer type | false |
 | `*` | `expr * expr` | Arithmetic multiplication | true |
 | `*=` | `var *= expr` | Arithmetic multiplication and assignement | true |
 | `+` | `expr + expr` | Arithmetic addition | true |
