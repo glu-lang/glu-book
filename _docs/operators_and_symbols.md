@@ -26,6 +26,7 @@ overloadable. Operators are listed alongside their precedences.
 | `&=` | `var &= expr` | Bitwise And and assignment | true |
 | `&&` | `expr && expr` | Short-circuiting logical AND | true |
 | `*` | `*type` | Raw pointer type | false |
+| `*` | `*(...) -> type` | Function pointer type | false |
 | `*` | `expr * expr` | Arithmetic multiplication | true |
 | `*=` | `var *= expr` | Arithmetic multiplication and assignment | true |
 | `+` | `expr + expr` | Arithmetic addition | true |
@@ -42,8 +43,14 @@ overloadable. Operators are listed alongside their precedences.
 | `<` | `expr < expr` | Lesser then comparison | true |
 | `<=` | `expr <= expr` | Lesser then or equal comparison | true |
 | `->` | `func(...) -> type` | Function type | false |
-| `...` | `..., expr..., ...expr, expr...expr` | Right-inclusive range literal | false |
-| `...<` | `...<expr, expr...<expr` | Right-inclusive range literal | false |
+| `...` | `expr...` | Infinite Left-inclusive range literal | false |
+| `...` | `...expr` | Infinite Right-inclusive range literal | false |
+| `...` | `expr...expr` | From expr to expr inclusive range literal | false |
+| `...<` | `...<expr` | Infinite Right-exclusive range literal | false |
+| `...<` | `expr...<expr` | From expr to expr Right-exclusive range literal | false |
+| `>...` | `expr>...` | Infinite Left-exclusive range literal | false |
+| `>...` | `expr>...expr` | From expr to expr Left-exclusive range literal | false |
+| `>...<` | `expr>...<expr` | From expr to expr Left and Right exclusive range literal | false |
 | `<<` | `expr << expr` | Left-shift | true |
 | `<<=` | `var <<= expr` | Left-shift and assignment | true |
 | `>>` | `expr >> expr` | Right-shift | true |
