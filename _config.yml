@@ -81,8 +81,11 @@ collections:
     sort_by: order
   docs:
     output: true
-    # order:
-      # -
+    order:
+      - hello_world.md
+      - comments_in_glu.md
+      - importing_cpp.md
+      - exporting_cpp.md
 
 defaults:
   - scope:

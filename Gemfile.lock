@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/glu-lang/rouge
+  revision: 4569b9393eb3e6e7902831df6cf4a4239b1687ef
+  branch: master
+  specs:
+    rouge (4.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -23,7 +30,6 @@ GEM
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     ffi (1.17.0)
-    ffi (1.17.0-arm64-darwin)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
@@ -129,14 +135,11 @@ GEM
       ffi (~> 1.0)
     rexml (3.3.1)
       strscan
-    rouge (4.3.0)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
     sass-embedded (1.77.5)
       google-protobuf (>= 3.25, < 5.0)
       rake (>= 13)
-    sass-embedded (1.77.5-arm64-darwin)
-      google-protobuf (>= 3.25, < 5.0)
     strscan (3.1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -158,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   html-proofer (~> 5.0)
   jekyll-theme-chirpy (~> 7.0, >= 7.0.1)
+  rouge!
 
 BUNDLED WITH
    2.3.7
