@@ -1,6 +1,6 @@
 ---
  title: Glu language Keywords
- category: Apendix
+ category: Appendix
 ---
 
 The following list contains keywords that are reserved for current or future use by the Glu language.

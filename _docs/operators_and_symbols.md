@@ -1,6 +1,6 @@
 ---
  title: Operators and Symbols
- category: Apendix
+ category: Appendix
 ---
 
 This appendix provides a glossary of Glu's syntax, encompassing operators
