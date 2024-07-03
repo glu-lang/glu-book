@@ -64,6 +64,7 @@ meaning they do not function like a call to a function.
 | Symbol | Explanation |
 |----------|----------|
 | `"..."` | String literal |
+| `'...'` | ASCII byte literal |
 | `ident::ident` | Namespace path |
 | `ident::ident` | Lib path |
 | `func ident<ident>()` | Specify a generic type for a function |
