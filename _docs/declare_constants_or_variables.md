@@ -53,8 +53,6 @@ As said before, if you need a counter for instance, you must use the `var` keywo
 
 Let's look again the previous example but declaring the `x` variable using the `var` keyword:
 
-> Greetings, this Glu code will compile!
-{: .prompt-tip }
 
 ```glu
 func main() {
@@ -71,4 +69,4 @@ Now, using the `var` keyword, we're allowed to change the value of `x` from `42`
 In Glu, there are two keywords for declaring local symbols:
 
 - `let` for constants
-- `var` for non-constants
+- `var` for variables
