@@ -46,7 +46,7 @@ The Glu compiler ensures that when you declare a value as constant using `let`, 
 
 Now, if you need a mutable variable for exemple a counter, you must use another keyword.
 
-## Declare a non-constant variable
+## Declare a variable
 
 In Glu, the keyword for creating a variable is the `var` keyword.
 As said before, if you need a counter for instance, you must use the `var` keyword.
