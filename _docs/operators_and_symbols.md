@@ -54,7 +54,7 @@ overloadable. Operators are listed alongside their precedences.
 | `|=` | `var |= expr` | Bitwise OR and assignement | true |
 | `;` | `expr;` | statement terminator | false |
 | `,` | `expr, expr` | Argument and elements separator | false |
-| `[]` | `expr[]` | Increment and dereference pointer | true |
+| `[]` | `expr[expr]` | Increment and dereference pointer | true |
 
 ## Symbols
 The following list includes all symbols that do not act as operators,
