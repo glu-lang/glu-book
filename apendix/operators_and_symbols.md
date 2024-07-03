@@ -1,3 +1,8 @@
+---
+ title: Operators and Symbols
+ category: Apendix
+---
+
 # Operators and Symbols
 This appendix provides a glossary of Glu's syntax, encompassing operators
 and symbols used independently or within paths, generics, trait bounds,
@@ -51,3 +56,14 @@ overloadable. Operators are listed alongside their precedences.
 | `\|=` | `var \|= expr` | Bitwise OR and assignement | true |
 | `;` | `expr;` | statement terminator | false |
 | `,` | `expr, expr` | Argument and elements separator | false |
+
+## Symbols
+The following list includes all symbols that do not act as operators,
+meaning they do not function like a call to a function.
+
+| Symbol | Explanation |
+|----------|----------|
+| `"..."` | String literal |
+| `ident::ident` | Namespace path |
+| `ident::ident` | Lib path |
+| `func ident<ident>()` | Specify a generic type for a function |
