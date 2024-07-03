@@ -86,7 +86,7 @@ collections:
       - comments_in_glu.md
       - importing_cpp.md
       - exporting_cpp.md
-      - declare_variables_in_glu.md
+      - declare_constants_or_variables.md
       - keywords.md
       - operators_and_symbols.md
 

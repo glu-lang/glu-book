@@ -1,5 +1,5 @@
 ---
-title: Declare variables in Glu
+title: Declare constants or variables
 category: Common Concepts
 ---
 
@@ -46,7 +46,7 @@ The Glu compiler ensures that when you declare a value as constant using `let`, 
 
 Now, if you need a mutable variable for exemple a counter, you must use another keyword.
 
-### Declare a non-constant variable
+## Declare a non-constant variable
 
 In Glu, the keyword for creating a variable is the `var` keyword.
 As said before, if you need a counter for instance, you must use the `var` keyword.
@@ -68,7 +68,7 @@ Now, using the `var` keyword, we're allowed to change the value of `x` from `42`
 
 ## Summary
 
-In Glu, there are two keywords for declaring variables:
+In Glu, there are two keywords for declaring local symbols:
 
 - `let` for constants
 - `var` for non-constants
