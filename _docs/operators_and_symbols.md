@@ -44,7 +44,6 @@ overloadable. Operators are listed alongside their precedences.
 | `<=` | `expr <= expr` | Lesser then or equal comparison | true |
 | `->` | `func(...) -> type` | Function return type | false |
 | `...` | `expr...` | Infinite Left-inclusive range literal | false |
-| `...` | `...expr` | Infinite Right-inclusive range literal | false |
 | `...` | `expr...expr` | From expr to expr inclusive range literal | false |
 | `..<` | `..<expr` | Infinite Right-exclusive range literal | false |
 | `..<` | `expr..<expr` | From expr to expr Right-exclusive range literal | false |
