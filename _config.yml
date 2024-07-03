@@ -88,8 +88,7 @@ collections:
       - exporting_cpp.md
       - keywords.md
       - operators_and_symbols.md
-      - keywords.md
-      - operators_and_symbols.md
+
 
 defaults:
   - scope:
