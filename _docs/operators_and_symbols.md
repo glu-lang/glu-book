@@ -31,10 +31,10 @@ overloadable. Operators are listed alongside their precedences.
 | `+` | `expr + expr` | Arithmetic addition | true |
 | `+=` | `var += expr` | Arithmetic addition and assignement | true |
 | `/` | `expr / expr` | Arithmetic division | true |
-| `/=` | `var / expr` | Arithmetic division and assignement | true |
+| `/=` | `var /= expr` | Arithmetic division and assignement | true |
 | `-` | `- expr` | Arithmetic negation | true |
 | `-` | `expr - expr` | Arithmetic substraction | true |
-| `-=` | `var - expr` | Arithmetic substraction and assignement | true |
+| `-=` | `var -= expr` | Arithmetic substraction and assignement | true |
 | `==` | `expr == expr` | Equality comparison | true |
 | `||` | `expr || expr` | Short-circuiting logical OR | true |
 | `>` | `expr > expr` | Greater then comparison | true |
