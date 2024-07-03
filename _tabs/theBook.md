@@ -5,10 +5,10 @@ order: 0
 categories: ['The Glu Basics', 'Common Concepts', 'Memory & Management', 'Structure related data using Structs', 'Build complex Data Types', 'Generic Types and Templates', 'Understanding Imports and Namespaces', 'Appendix']
 ---
 
-Below, every chapters of the Glu Programming Language Book.
+Below, every chapter of the Glu Programming Language Book.
 
 
-{% for category in site.tabs[0].categories -%}
+{% for category in page.categories -%}
 
 ### {{ category }}:
 

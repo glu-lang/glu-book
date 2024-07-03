@@ -90,6 +90,10 @@ collections:
       - declare_constants_or_variables.md
       - keywords.md
       - operators_and_symbols.md
+  refs:
+    output: true
+    order:
+      - compiler_architecture.md
 
 defaults:
   - scope:
@@ -113,6 +117,14 @@ defaults:
   - scope:
       path: ""
       type: docs
+    values:
+      layout: post
+      comments: true
+      toc: true # Display TOC column in posts.
+      permalink: /:title/
+  - scope:
+      path: ""
+      type: refs
     values:
       layout: post
       comments: true

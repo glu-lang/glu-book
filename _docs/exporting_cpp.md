@@ -3,8 +3,6 @@ title: Export a Glu Library to C++
 category: Understanding Imports and Namespaces
 ---
 
-# Export a Glu Library to C++
-
 We can not only import C++ libraries into Glu but also export Glu libraries to C++. This also allows you to import libraries from another language, and re-export them to a second language. In this example, we will export a Glu library to C++, but the same principle can be applied to other languages.
 
 ## Creating a C++ File

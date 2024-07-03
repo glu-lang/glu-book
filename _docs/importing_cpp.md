@@ -3,8 +3,6 @@ title: Import a C++ Library in Glu
 category: Understanding Imports and Namespaces
 ---
 
-# Import a C++ Library in Glu
-
 The Glu programming language is designed to be used in conjunction with other languages and tools. In this section, we will see how to use Glu in a project that involves multiple languages and tools.
 
 ## Creating a Project Directory
