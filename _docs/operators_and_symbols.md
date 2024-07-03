@@ -39,7 +39,7 @@ overloadable. Operators are listed alongside their precedences.
 | `-` | `expr - expr` | Arithmetic substraction | true |
 | `-=` | `var - expr` | Arithmetic substraction and assignement | true |
 | `==` | `expr == expr` | Equality comparison | true |
-| `\|\|` | `expr \|\| expr` | Short-circuiting logical OR | true |
+| `||` | `expr || expr` | Short-circuiting logical OR | true |
 | `>` | `expr > expr` | Greater then comparison | true |
 | `>=` | `expr >= expr` | Greater then comparison or equal | true |
 | `<` | `expr < expr` | Lesser then comparison | true |
@@ -53,8 +53,8 @@ overloadable. Operators are listed alongside their precedences.
 | `>>=` | `var >>= expr` | Right-shift and assignement | true |
 | `^` | `expr ^ expr` | Bitwise exclusive OR | true |
 | `^=` | `var ^= expr` | Bitwise exclusive OR and assignment | true |
-| `\|` | `expr \| expr` | Bitwise OR | true |
-| `\|=` | `var \|= expr` | Bitwise OR and assignement | true |
+| `|` | `expr | expr` | Bitwise OR | true |
+| `|=` | `var |= expr` | Bitwise OR and assignement | true |
 | `;` | `expr;` | statement terminator | false |
 | `,` | `expr, expr` | Argument and elements separator | false |
 | `[]` | `expr[]` | Increment and dereference pointer | true |
