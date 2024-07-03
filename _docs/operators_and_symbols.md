@@ -45,7 +45,6 @@ overloadable. Operators are listed alongside their precedences.
 | `->` | `func(...) -> type` | Function return type | false |
 | `...` | `expr...` | Infinite Left-inclusive range literal | false |
 | `...` | `expr...expr` | From expr to expr inclusive range literal | false |
-| `..<` | `..<expr` | Infinite Right-exclusive range literal | false |
 | `..<` | `expr..<expr` | From expr to expr Right-exclusive range literal | false |
 | `<<` | `expr << expr` | Left-shift | true |
 | `<<=` | `var <<= expr` | Left-shift and assignment | true |
