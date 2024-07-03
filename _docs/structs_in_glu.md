@@ -72,17 +72,18 @@ func main() {
 
 ## Packing and Unpacking Structures
 
-Glu allows you to pack structures similar to C for memory efficiency. This is done using the `@packed` attribute.
+Glu allows you to pack structures for memory efficiency using the `@packed` attribute. This feature exists in other programming languages and can be useful for certain applications where memory usage is critical.
 
 ```glu
-@packed struct Color {
-    red: UInt8,
-    green: UInt8,
-    blue: UInt8,
+@packed struct Data {
+    a: Int8,
+    b: Int64,
 }
 ```
 
-In this example, the structure Color is packed, meaning its fields are laid out in memory without padding.
+In this example, the structure Data is packed, meaning its fields are laid out in memory without padding. While this can save memory, it comes with a trade-off: accessing the members of a packed structure can be slower than accessing members of a non-packed structure due to potential misalignment in memory.
+
+Using the @packed attribute allows you to gain memory efficiency at the cost of execution speed. This trade-off should be considered when deciding whether to pack a structure.
 
 ## Overriding Operators for Structures
 
