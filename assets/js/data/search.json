@@ -16,7 +16,7 @@ swcache: true
     "snippet": {{ _content | truncate: 200 | jsonify }},
     "content": {{ _content | jsonify }}
   }{% unless forloop.last %},{% endunless %}
-  {% endfor %},
+  {% endfor %}
   {% for post in site.docs %}
   {
     "title": {{ post.title | jsonify }},
