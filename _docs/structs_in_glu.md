@@ -81,9 +81,43 @@ Glu allows you to pack structures for memory efficiency using the `@packed` attr
 }
 ```
 
-In this example, the structure Data is packed, meaning its fields are laid out in memory without padding. While this can save memory, it comes with a trade-off: accessing the members of a packed structure can be slower than accessing members of a non-packed structure due to potential misalignment in memory.
+In this example, the structure `Data` is packed, meaning its fields are laid out in memory without padding. Let's compare the memory layout before and after using the `@packed` attribute.
 
-Using the @packed attribute allows you to gain memory efficiency at the cost of execution speed. This trade-off should be considered when deciding whether to pack a structure.
+Without `@packed` attribute:
+
+```glu
+struct Data {
+    a: Int8,
+    b: Int64,
+}
+```
+
+Without the @packed attribute, the compiler may add padding between the fields to align them in memory, improving access speed but using more memory. For example, an `Int8` field followed by an `Int64` field might look like this in memory:
+
+```
+| a (1 byte) | padding (7 bytes) | b (8 bytes) |
+```
+
+This layout ensures that `b` is aligned to an 8-byte boundary, but it uses a total of 16 bytes (1 + 7 + 8).
+
+With `@packed` attribute:
+
+```glu
+@packed struct Data {
+    a: Int8,
+    b: Int64,
+}
+```
+
+When the `@packed` attribute is used, no padding is added, and the fields are laid out consecutively in memory:
+
+```
+| a (1 byte) | b (8 bytes) |
+```
+
+This layout uses only 9 bytes (1 + 8), saving memory. However, accessing `b` may be slower because it is not aligned to an 8-byte boundary.
+
+Using the `@packed` attribute allows you to gain memory efficiency at the cost of execution speed. This trade-off should be considered when deciding whether to pack a structure.
 
 ## Overriding Operators for Structures
 
@@ -95,7 +129,7 @@ operator ==(a: Person, b: Person) -> Bool {
 }
 ```
 
-In this example, the == operator is overridden to compare the fields name and age of two `Person` structures.
+In this example, the `==` operator is overridden to compare the fields name and age of two `Person` structures.
 
 ## Example Program with Structures
 
