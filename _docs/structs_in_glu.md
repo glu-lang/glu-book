@@ -12,20 +12,29 @@ A structure in Glu is declared using the `struct` keyword followed by the struct
 ```glu
 struct Person {
     name: String,
-    age: Int // optional trailing comma
+    age: Int,
 }
 ```
 
-In this example, the structure `Person` has two fields: name of type String and age of type Int. You can also provide default values for the fields:
+In this example, the structure `Person` has two fields: name of type `String` and age of type `Int`. You can also provide default values for the fields:
 
 ```glu
 struct Person {
     name: String = "Unknown",
-    age: Int = 0
+    age: Int = 0,
 }
 ```
 
-In this example, the fields name and age are initialized to "Unknown" and 0 respectively.
+In this example, the fields name and age are initialized to `Unknown` and `0` respectively.
+
+The last comma in the field list is optional, so you can write the following:
+
+```glu
+struct Person {
+    name: String,
+    age: Int
+}
+```
 
 ## Declaring an Instance of a Structure
 
@@ -39,8 +48,8 @@ struct Person {
 
 func main() {
     let person1: Person = {}; //  initialisation with default values
-    let person2: Person = { name: "Alice", age: 25 }; // initialisation with custom values
-    let person3: Person = { name: "Bob" }; // initialisation with custom name but with default age
+    let person2: Person = { "Alice", 25 }; // initialisation with custom values
+    let person3: Person = { "Bob" }; // initialisation with custom name but with default age
 }
 ```
 
@@ -55,7 +64,7 @@ struct Person {
 }
 
 func main() {
-    let person: Person = { name: "Alice", age: 25 };
+    let person: Person = { "Alice", 25 };
     std::print(person.name); // prints "Alice"
     std::print(person.age); // prints 25
 }
@@ -105,7 +114,7 @@ operator ==(a: Person, b: Person) -> Bool {
 
 func main() {
     let person1: Person = {}; // initialisation with default values
-    let person2: Person = { name: "Bob", age: 30 };
+    let person2: Person = { "Bob", 30 };
 
     std::print(person1.name); // prints "Unknown"
     std::print(person2.age); // prints 30
