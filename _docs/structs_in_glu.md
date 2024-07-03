@@ -70,7 +70,7 @@ func main() {
 }
 ```
 
-## Packing and Unpacking Structures
+## Packed Structures
 
 Glu allows you to pack structures for memory efficiency using the `@packed` attribute. This feature exists in other programming languages and can be useful for certain applications where memory usage is critical.
 
@@ -92,11 +92,13 @@ struct Data {
 }
 ```
 
-Without the @packed attribute, the compiler may add padding between the fields to align them in memory, improving access speed but using more memory. For example, an `Int8` field followed by an `Int64` field might look like this in memory:
+Without the `@packed` attribute, the compiler may add padding between the fields to align them in memory, improving access speed but using more memory. For example, an `Int8` field followed by an `Int64` field might look like this in memory:
 
-```
-| a (1 byte) | padding (7 bytes) | b (8 bytes) |
-```
+| Name    | Size (bytes) |
+| ------- | ------------ |
+| a       | 1            |
+| padding | 7            |
+| b       | 8            |
 
 This layout ensures that `b` is aligned to an 8-byte boundary, but it uses a total of 16 bytes (1 + 7 + 8).
 
@@ -111,9 +113,10 @@ With `@packed` attribute:
 
 When the `@packed` attribute is used, no padding is added, and the fields are laid out consecutively in memory:
 
-```
-| a (1 byte) | b (8 bytes) |
-```
+| Name | Size (bytes) |
+| ---- | ------------ |
+| a    | 1            |
+| b    | 8            |
 
 This layout uses only 9 bytes (1 + 8), saving memory. However, accessing `b` may be slower because it is not aligned to an 8-byte boundary.
 
