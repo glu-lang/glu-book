@@ -17,11 +17,13 @@ overloadable. Operators are listed alongside their precedences.
 |----------|----------|-------------|--------------|
 | `.` | `expr . ident` | Access to a member of a struct | false |
 | `!` | `expr!` | Bitwise or logical complement | true |
+| `?` | `pat ? pat` | Ternary pattern | true |
 | `%` | `expr % expr` | Arithmetic remainder | true |
 | `%` | `var %= expr` | Arithmetic remainder and assignement | true |
 | `!=` | `expr != expr` | Nonequality comparison | true |
 | `.*` | `expr .* ident`  | Access to a member of a struct after dereferencing | false |
 | `:` | `ident : type` | Specify type | false |
+| `:` | `pat ? pat : pat` | delimiter in ternary pattern | false |
 | `&` | `&expr` | Borrow | false |
 | `&` | `expr & expr` | Bitwise And | true |
 | `&=` | `&expr` | Borrow | true |
@@ -56,6 +58,7 @@ overloadable. Operators are listed alongside their precedences.
 | `\|=` | `var \|= expr` | Bitwise OR and assignement | true |
 | `;` | `expr;` | statement terminator | false |
 | `,` | `expr, expr` | Argument and elements separator | false |
+| `[]` | `expr[]` | Increment and dereference pointer | true |
 
 ## Symbols
 The following list includes all symbols that do not act as operators,
