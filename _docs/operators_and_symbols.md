@@ -4,8 +4,7 @@
 ---
 
 This appendix provides a glossary of Glu's syntax, encompassing operators
-and symbols used independently or within paths, generics, macros, attributes,
-comments, and brackets.
+and symbols used independently or within paths, generics, macros, attributes, comments, and brackets.
 
 ## Operators
 This table lists operators in Glu, along with examples of their contextual
@@ -22,7 +21,7 @@ overloadable. Operators are listed alongside their precedences.
 | `!=` | `expr != expr` | Nonequality comparison | true |
 | `.*` | `expr.*`  | Dereference | true |
 | `:` | `ident : type` | Specify type | false |
-| `&` | `&expr` | Borrow | false |
+| `&` | `&expr` | Take the address of a value | false |
 | `&` | `expr & expr` | Bitwise And | true |
 | `&=` | `&expr` | Bitwise And and assignement | true |
 | `&&` | `expr && expr` | Short-circuiting logical AND | true |
@@ -30,7 +29,7 @@ overloadable. Operators are listed alongside their precedences.
 | `*` | `expr * expr` | Arithmetic multiplication | true |
 | `*=` | `var *= expr` | Arithmetic multiplication and assignement | true |
 | `+` | `expr + expr` | Arithmetic addition | true |
-| `+=` | `var + expr` | Arithmetic addition and assignement | true |
+| `+=` | `var += expr` | Arithmetic addition and assignement | true |
 | `/` | `expr / expr` | Arithmetic division | true |
 | `/=` | `var / expr` | Arithmetic division and assignement | true |
 | `-` | `- expr` | Arithmetic negation | true |
@@ -39,7 +38,7 @@ overloadable. Operators are listed alongside their precedences.
 | `==` | `expr == expr` | Equality comparison | true |
 | `||` | `expr || expr` | Short-circuiting logical OR | true |
 | `>` | `expr > expr` | Greater then comparison | true |
-| `>=` | `expr >= expr` | Greater then comparison or equal | true |
+| `>=` | `expr >= expr` | Greater then or equal comparison | true |
 | `<` | `expr < expr` | Lesser then comparison | true |
 | `<=` | `expr <= expr` | Lesser then or equal comparison | true |
 | `->` | `fn(...) -> type` | Function type | false |
