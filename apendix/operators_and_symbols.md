@@ -71,3 +71,7 @@ meaning they do not function like a call to a function.
 | `ident::ident` | Namespace path |
 | `ident::ident` | Lib path |
 | `func ident<ident>()` | Specify a generic type for a function |
+| `path::*` | Wild card to import every modules from a path |
+| `{...}` | Bloc expression |
+| `Type {...}` | Struct literal |
+| `Type[] = {...}` | Array literal |
