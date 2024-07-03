@@ -3,7 +3,6 @@
  category: Apendix
 ---
 
-# Glu language Keywords
 The following list contains keywords that are reserved for current or future use by the Glu language.
 - `as` - perform primitive casting, disambiguate the specific trait containing an item, or rename items in import statements
 - `break` - exit a loop

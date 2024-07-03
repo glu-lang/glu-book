@@ -3,7 +3,6 @@
  category: Apendix
 ---
 
-# Operators and Symbols
 This appendix provides a glossary of Glu's syntax, encompassing operators
 and symbols used independently or within paths, generics, trait bounds,
 macros, attributes, comments, tuples, and brackets.
