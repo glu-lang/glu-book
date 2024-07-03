@@ -46,11 +46,8 @@ overloadable. Operators are listed alongside their precedences.
 | `...` | `expr...` | Infinite Left-inclusive range literal | false |
 | `...` | `...expr` | Infinite Right-inclusive range literal | false |
 | `...` | `expr...expr` | From expr to expr inclusive range literal | false |
-| `...<` | `...<expr` | Infinite Right-exclusive range literal | false |
-| `...<` | `expr...<expr` | From expr to expr Right-exclusive range literal | false |
-| `>...` | `expr>...` | Infinite Left-exclusive range literal | false |
-| `>...` | `expr>...expr` | From expr to expr Left-exclusive range literal | false |
-| `>...<` | `expr>...<expr` | From expr to expr Left and Right exclusive range literal | false |
+| `..<` | `..<expr` | Infinite Right-exclusive range literal | false |
+| `..<` | `expr..<expr` | From expr to expr Right-exclusive range literal | false |
 | `<<` | `expr << expr` | Left-shift | true |
 | `<<=` | `var <<= expr` | Left-shift and assignment | true |
 | `>>` | `expr >> expr` | Right-shift | true |
