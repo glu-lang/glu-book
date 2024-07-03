@@ -4,8 +4,8 @@
 ---
 
 This appendix provides a glossary of Glu's syntax, encompassing operators
-and symbols used independently or within paths, generics, trait bounds,
-macros, attributes, comments, tuples, and brackets.
+and symbols used independently or within paths, generics, macros, attributes,
+comments, and brackets.
 
 ## Operators
 This table lists operators in Glu, along with examples of their contextual
