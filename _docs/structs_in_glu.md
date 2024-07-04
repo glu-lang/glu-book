@@ -1,6 +1,6 @@
 ---
-title: Using Structures in Glu
-category: Structure related data using Structs
+title: Using Structures
+category: Data Types
 ---
 
 Structures are a way to group related data together in Glu. They are similar to classes in other languages but are typically used for simpler data structures. In this section, we will cover how to declare and use structures in Glu.

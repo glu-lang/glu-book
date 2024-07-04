@@ -1,5 +1,5 @@
 ---
-title: Declare constants or variables
+title: Declaring Constants and Variables
 category: Common Concepts
 ---
 
