@@ -139,7 +139,7 @@ This infinite loop will print the numbers from 0 to the maximum value of an `Int
 For loops can also iterate over arrays and other collections, not just ranges:
 
 ```glu
-let numbers: [Int] = { 1, 2, 3, 4, 5 };
+let numbers: Int[5] = { 1, 2, 3, 4, 5 };
 
 for n in numbers {
     std::print(n);
