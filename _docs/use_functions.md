@@ -20,13 +20,13 @@ To declare a function, four key components are required:
 - The `func` keyword
 - The function name
 - A list of any necessary parameters
-- The function potential returned value's type
+- The function’s return type, if applicable
 
 The body of the function is enclosed in curly brackets `{}`, which indicate to the compiler where the function begins and ends.
 
 In the example below, the function prototype of `my_func` specifies the function name and parameters: `param1` and `param2`, both of which are of type `Int`.
 
-![Representation of the differents key components required by a function declaration in Glu](/assets/img/function_explaining.png)
+![Representation of the differents key components required by a function declaration in Glu: `func my_func(param1: Int, param2: Int);`](/assets/img/function_explaining.png)
 
 A function can be declared without being immediately implemented.
 In such cases, a semicolon `;` is used instead of curly brackets.
@@ -52,24 +52,28 @@ func my_func(param1: Int, param2: Int) {
 
 This function will print `84` as `my_func` simply adds `param1` to `param2`.
 
-But, optional parameters can be specified in Glu by specifying default values to any function parameter:
+Since the types of `my_func` parameters are explicitly specified as `Int`, you must provide strictly `Int` typed values.
+When declaring a function with parameters, the type of each parameter must be explicitly stated.
+Note that the `my_func` function is defined after the `main` function in the source code, but it could have been defined before.
+Glu does not enforce the order of function definitions, only that they are defined within an accessible scope.
+
+### Optional parameters
+
+Optional parameters can be specified in Glu by specifying default values to any function parameter:
 
 ```glu
 func main() {
     my_func(2); // This will print 44
 }
 
-func my_func(param1: Int = 42, param2: Int) {
+func my_func(param1: Int, param2: Int = 42) {
     std::print(param1 + param2);
 }
 ```
-With this declaration, you do not need to provide `param1` a value, as it is done in the `main` func.
 
-
-Since the types of `my_func` parameters are explicitly specified as `Int`, you must provide strictly `Int` typed values.
-When declaring a function with parameters, the type of each parameter must be explicitly stated.
-Note that the `my_func` function is defined after the `main` function in the source code, but it could have been defined before.
-Glu does not enforce the order of function definitions, only that they are defined within an accessible scope.
+With this declaration, you do not need to provide `param2` a value, the default one will be used .
+You should keep in mind that the order in which your optional parameters are written have his importance.
+If a non-optional parameter is asked with an optional one, the optional parameter must always be declared last.
 
 ## Functions with Return Values
 
