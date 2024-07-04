@@ -83,9 +83,10 @@ collections:
     output: true
     order:
       - hello_world.md
-      - declare_constants_or_variables.md
-      - comments_in_glu.md
-      - structs_in_glu.md
+      - constants_or_variables.md
+      - comments.md
+      - control_flow.md
+      - structs.md
       - importing_cpp.md
       - exporting_cpp.md
       - keywords.md
