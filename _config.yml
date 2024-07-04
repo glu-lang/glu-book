@@ -83,16 +83,13 @@ collections:
     output: true
     order:
       - hello_world.md
-      - constants_and_variables.md
-      - use_functions.md
-      - comments.md
-      - control_flow.md
-      - structs.md
-      - enums.md
-      - typealiases.md
+      - declare_constants_or_variables.md
+      - comments_in_glu.md
+      - structs_in_glu.md
+      - operators_overload.md
+      - templating_structures.md
       - importing_cpp.md
       - exporting_cpp.md
-      - operators_overload.md
       - keywords.md
       - operators_and_symbols.md
   refs:

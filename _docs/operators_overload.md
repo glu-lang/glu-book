@@ -1,6 +1,6 @@
 ---
  title: Operators overload
- category: Build complex Data Types
+ category: Data Types
 ---
 
 Operator overloading allows you to redefine the behavior of operators for specific data types. This makes your code more intuitive and readable. In our language, the syntax for overloading an operator is straightforward.
