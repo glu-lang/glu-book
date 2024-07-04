@@ -83,10 +83,12 @@ collections:
     output: true
     order:
       - hello_world.md
-      - constants_or_variables.md
+      - constants_and_variables.md
       - comments.md
       - control_flow.md
       - structs.md
+      - enums.md
+      - typealiases.md
       - importing_cpp.md
       - exporting_cpp.md
       - keywords.md
