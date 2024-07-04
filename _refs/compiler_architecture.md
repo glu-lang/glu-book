@@ -44,7 +44,11 @@ We believe that debugging is important, both without and with optimizations. The
 
 It is also possible to generate debug information for the Glu Intermediate Language (GIL) representation of the program, using `-ggil`. In that case, temporary GIL files are generated, and the debuggers will step through those files instead of the source files. This can be useful when debugging high-level optimizations that are performed on the GIL representation of the program.
 
+![Glu Compiler Stages diagram when using -ggil](/assets/img/compiler-stages-ggil.png)
+
 It is also possible to generate debug information for decompiled Glu source code, using `-gdec`, which can be a better experience when debugging optimized code. The compiler will go through all compilation stages, then decompile the optimized LLVM IR back to Glu source code, and generate debug information referencing the decompiled source code. This allows stepping through the decompiled source code in the debugger, providing a more natural debugging experience, though the code may not be exactly the same as the original source code.
+
+![Glu Compiler Stages diagram when using -gdec](/assets/img/compiler-stages-gdec.png)
 
 Finally, it is possible to disable debug information generation using `-g0`, which can reduce the size of the generated object files and make the compilation process faster. However, this is not recommended for development, as it makes debugging more difficult.
 
