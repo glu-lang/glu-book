@@ -1,5 +1,5 @@
 ---
- title: Glu language Keywords
+ title: Glu Language Keywords
  category: Appendix
 ---
 

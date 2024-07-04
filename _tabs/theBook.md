@@ -2,15 +2,14 @@
 icon: fas fa-book
 title: The Book
 order: 0
-categories: ['The Glu Basics', 'Common Concepts', 'Memory & Management', 'Structure related data using Structs', 'Build complex Data Types', 'Generic Types and Templates', 'Understanding Imports and Namespaces', 'Appendix']
+categories: ['Basics', 'Common Concepts', 'Data Types', 'Templates', 'Imports and Modules', 'Appendix']
 ---
 
 Below, every chapter of the Glu Programming Language Book.
 
-
 {% for category in page.categories -%}
 
-### {{ category }}:
+## {{ category }}
 
 {% for doc in site.docs -%}
 {% if doc.category == category -%}

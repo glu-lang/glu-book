@@ -9,7 +9,7 @@ Below, every article explaining the architecture and the inner workings of the G
 
 {% for category in page.categories -%}
 
-### {{ category }}:
+## {{ category }}
 
 {% for doc in site.refs -%}
 {% if doc.category == category -%}
