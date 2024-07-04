@@ -26,7 +26,7 @@ body {
   content: '';
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html:not([data-mode]) body #background .ellipse {
     display: none;
   }
@@ -34,7 +34,7 @@ body {
 
 html[data-mode='dark'] body #background .ellipse {
   display: none;
-}
+} */
 
 /* yellow #edc31c */
 /* pink #ffc2af */
@@ -84,7 +84,12 @@ footer {
   background-color: transparent;
 }
 
+/* sidebar */
 body aside {
   background-color: transparent !important;
   /* background-color: rgba(0, 0, 0, 0.3); */
+}
+
+#avatar {
+  box-shadow: none !important;
 }
