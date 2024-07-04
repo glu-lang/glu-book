@@ -24,21 +24,21 @@ To declare a function, four key components are required:
 
 The body of the function is enclosed in curly brackets `{}`, which indicate to the compiler where the function begins and ends.
 
-In the example below, the function prototype of `my_func` specifies the function name and _parameters_: `param1` and `param2`, both of which are of type `Int`.
+In the example below, the function prototype of `my_func` specifies the function name and parameters: `param1` and `param2`, both of which are of type `Int`.
 
 ![Representation of the differents key components required by a function declaration in Glu](/assets/img/function_explaining.png)
 
 A function can be declared without being immediately implemented.
 In such cases, a semicolon `;` is used instead of curly brackets.
-Although functions do not always require _parameters_, the `func` keyword and the function name are always necessary for declaration.
+Although functions do not always require parameters, the `func` keyword and the function name are always necessary for declaration.
 
-## Function _Parameters_
+## Function Parameters
 
-A function may not always require _parameters_, but what exactly is a _parameter_ ?
+A function may not always require parameters, but what exactly is a parameter ?
 Parameters are special variables that appear in a function's signature.
-When a function requires _parameters_, they must be provided with concrete values.
+When a function requires parameters, they must be provided with concrete values.
 
-In the following version of `my_func`, the _parameters_ `param1` and `param2` are assigned the values `42` and `42`:
+In the following version of `my_func`, the parameters `param1` and `param2` are assigned the values `42` and `42`:
 
 ```glu
 func main() {
@@ -66,8 +66,8 @@ func my_func(param1: Int = 42, param2: Int) {
 With this declaration, you do not need to provide `param1` a value, as it is done in the `main` func.
 
 
-Since the types of `my_func` _parameters_ are explicitly specified as `Int`, you must provide strictly `Int` typed values.
-When declaring a function with _parameters_, the type of each _parameter_ must be explicitly stated.
+Since the types of `my_func` parameters are explicitly specified as `Int`, you must provide strictly `Int` typed values.
+When declaring a function with parameters, the type of each parameter must be explicitly stated.
 Note that the `my_func` function is defined after the `main` function in the source code, but it could have been defined before.
 Glu does not enforce the order of function definitions, only that they are defined within an accessible scope.
 
