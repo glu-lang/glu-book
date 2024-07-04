@@ -22,5 +22,6 @@ The following list contains keywords that are reserved for current or future use
 - `return` - return from a function
 - `struct` - define a data structure
 - `true` - Boolean true literal
+- `typealias` - define a type alias
 - `var` - define a variable
 - `while` - conditional loop based on the outcome of an expression
