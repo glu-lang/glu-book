@@ -84,6 +84,7 @@ collections:
     order:
       - hello_world.md
       - constants_and_variables.md
+      - use_functions.md
       - comments.md
       - control_flow.md
       - structs.md
