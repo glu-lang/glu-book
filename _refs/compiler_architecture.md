@@ -14,25 +14,25 @@ The Glu compiler has multiple stages, each of which performs a specific task in 
 ![Glu Compiler Stages](/assets/img/compiler-stages.png)
 
 The code goes through the following representations during the compilation process:
- - Glu Source Code: The original source code written in the Glu programming language (.glu files).
- - AST: The abstract syntax tree representation of the program.
- - GIL: The Glu Intermediate Language, an intermediate representation of the program that is used for high-level optimization and analysis (.gil files).
- - LLVM IR: The intermediate representation of the program in the LLVM compiler infrastructure (.ll files for textual representation, .bc files for binary representation).
- - MIR: The LLVM Machine IR, the final representation of the program that is used to generate machine code.
- - Object File: The compiled machine code in an object file format (.o on Unix-like systems, .obj on Windows).
+ - **Glu Source Code**: The original source code written in the Glu programming language (`.glu` files).
+ - **AST**: The abstract syntax tree representation of the program.
+ - **GIL**: The Glu Intermediate Language, an intermediate representation of the program that is used for high-level optimization and analysis (`.gil` files).
+ - **LLVM IR**: The intermediate representation of the program in the LLVM compiler infrastructure (`.ll` files for textual representation, `.bc` files for binary representation).
+ - **MIR**: The LLVM Machine IR, the final representation of the program that is used to generate machine code.
+ - **Object File**: The compiled machine code in an object file format (`.o` on Unix-like systems, `.obj` on Windows).
 
 The Glu compilation process consists of the following stages:
- - ASTGen: Glu Source Code -> AST: The ASTGen stage parses the Glu source code and generates an abstract syntax tree (AST) representation of the program.
- - GILGen: AST -> GIL: The GILGen stage lowers the AST representation of the program to the Glu Intermediate Language (GIL) representation.
- - GILOptimize: GIL -> GIL: The GIL representation of the program is optimized using high-level optimizations.
- - IRGen: GIL -> LLVM IR: The IRGen stage generates the LLVM IR representation of the program from the GIL representation.
+ - **ASTGen**: `Glu Source Code -> AST`: The ASTGen stage parses the Glu source code and generates an abstract syntax tree (AST) representation of the program.
+ - **GILGen**: `AST -> GIL`: The GILGen stage lowers the AST representation of the program to the Glu Intermediate Language (GIL) representation.
+ - **GILOptimize**: `GIL -> GIL`: The GIL representation of the program is optimized using high-level optimizations.
+ - **IRGen**: `GIL -> LLVM IR`: The IRGen stage generates the LLVM IR representation of the program from the GIL representation.
 
 The LLVM infrastructure is used to optimize and generate machine code from the LLVM IR representation of the program, leveraging the powerful optimization passes and code generation capabilities of LLVM.
 
 The Glu decompilation process is similar to the compilation process but in reverse:
- - IRDec: LLVM IR -> GIL: The IRDec stage generates a GIL representation of the program from the LLVM IR representation.
- - GILDec: GIL -> AST: The GILDec stage generates an AST representation of the program from the GIL representation.
- - ASTPrinter: AST -> Glu Source Code: The ASTPrinter stage pretty prints Glu source code from the AST representation of the program.
+ - **IRDec**: `LLVM IR -> GIL`: The IRDec stage generates a GIL representation of the program from the LLVM IR representation.
+ - **GILDec**: `GIL -> AST`: The GILDec stage generates an AST representation of the program from the GIL representation.
+ - **ASTPrinter**: `AST -> Glu Source Code`: The ASTPrinter stage pretty prints Glu source code from the AST representation of the program.
 
 The Glu compiler is designed to be modular and extensible, allowing developers to easily add optimization passes to the compilation process. The compiler is written in a modular way, with each stage implemented as a separate C++ library. This design allows developers to experiment with new optimizations and transformations without recompiling the entire compiler.
 
