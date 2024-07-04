@@ -36,7 +36,7 @@ Although functions do not always require parameters, the `func` keyword and the 
 
 A function may not always require parameters, but what exactly is a parameter ?
 Parameters are special variables that appear in a function's signature.
-When a function requires parameters, they must be provided with concrete values.
+When a function requires parameters, they must be provided with concrete values at the call site.
 
 In the following version of `my_func`, the parameters `param1` and `param2` are assigned the values `42` and `42`:
 
@@ -52,7 +52,7 @@ func my_func(param1: Int, param2: Int) {
 
 This function will print `84` as `my_func` simply adds `param1` to `param2`.
 
-Since the types of `my_func` parameters are explicitly specified as `Int`, you must provide strictly `Int` typed values.
+Since the types of `my_func` parameters are explicitly specified as `Int`, you must provide values of type `Int`.
 When declaring a function with parameters, the type of each parameter must be explicitly stated.
 Note that the `my_func` function is defined after the `main` function in the source code, but it could have been defined before.
 Glu does not enforce the order of function definitions, only that they are defined within an accessible scope.
@@ -72,8 +72,9 @@ func my_func(param1: Int, param2: Int = 42) {
 ```
 
 With this declaration, you do not need to provide `param2` a value, the default one will be used .
-You should keep in mind that the order in which your optional parameters are written have his importance.
-If a non-optional parameter is asked with an optional one, the optional parameter must always be declared last.
+However, it's important to pay attention to the order of your parameters.
+If a function has both required and optional parameters, the optional ones must always come after the required ones.
+
 
 ## Functions with Return Values
 
@@ -117,10 +118,9 @@ Understanding the structure and syntax of functions is crucial in Glu programmin
 Functions enable modular and reusable code, making programs more efficient and easier to manage.
 
 
-Functions are defined with four key components: the `func` keyword, the function name, parameters, and the return type, with the body enclosed in curly brackets.
-Also, parameters are special variables required by some functions, and default values can make those parameters optional.
-Functions can also return values, specified by an arrow `->` and the `return` keyword.
+Functions are defined with four key components: the `func` keyword, the function name, parameters, and a potential return type, with the body enclosed in curly brackets.
+Also, parameters are constant local bindings required by some functions, and default values can make those parameters optional.
+Functions can also return values, specified by an arrow `->` in the signature, and a `return` statement in the body.
 
-
-The examples provided illustrate how to declare and define functions, specify parameters, and use return values effectively.
+The previous examples demonstrate how to declare and define functions, set parameters, and use return values effectively.
 Understanding these elements allows you to write modular, efficient, and reusable code in Glu, ensuring your programs are both robust and well-organized.
