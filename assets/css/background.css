@@ -26,11 +26,14 @@ body {
   content: '';
 }
 
-html:not([data-mode]),
-html[data-mode='dark'] {
-  body #background .ellipse {
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) body #background .ellipse {
     display: none;
   }
+}
+
+html[data-mode='dark'] body background .ellipse {
+  display: none;
 }
 
 /* yellow #edc31c */
