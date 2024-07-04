@@ -20,10 +20,10 @@ Here's an explanation of the components:
 ### Template Declaration:
 
 ```glu
-struct<T>
+struct Container<T>
 ```
 
-This declares a template structure with a generic type T. The type T can be any type (Int, String, another struct, etc.).
+This declares a template structure named Container with a generic type T. The type T can be any type (Int, String, another struct, etc.).
 
 ### Structure Definition:
 
