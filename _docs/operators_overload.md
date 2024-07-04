@@ -47,9 +47,9 @@ Once the operator is overloaded, you can compare the names and ages of two insta
 
 ```glu
 func main() {
-    let Emil : Person = {"Emil", 20};
-    let Jerem : Person = {"Jerem", 20};
-    let EmilClone : Person = {"Emil", 20};
+    let emil : Person = {"Emil", 21};
+    let jerem : Person = {"Jerem", 20};
+    let emilClone : Person = {"Emil", 21};
 
     if (Emil == Jerem) {
         std::print("Emil is Jerem??");
@@ -63,7 +63,8 @@ func main() {
 ```
 In this example the following output should be:
 ```
-Emil is not Jerem! It's a Clone!!!
+Emil is not Jerem!
+It's a Clone!!!
 ```
 
 Operator overloading allows you to make your code more natural and easier to read. By using the syntax described above, you can define specific behaviors for common operators (like ==, +, -, etc.) for your custom data types, thus enhancing the flexibility and readability of your code. In this example, we overloaded the == operator to compare both the names and ages of Person instances, making person comparisons more intuitive.
