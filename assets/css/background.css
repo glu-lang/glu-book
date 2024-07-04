@@ -1,5 +1,14 @@
+/* background  */
+
+:root {
+  --sidebar-width: 300px;
+  --background-width: 70vw;
+  --background-height: 30vh;
+}
+
 body {
   position: relative;
+  overflow: hidden;
 }
 
 #background {
@@ -15,38 +24,46 @@ body {
   top: 0;
   left: 0;
   opacity: 0.6;
-  filter: blur(60px);
   position: absolute;
   content: '';
 }
 
-.ellipse-purple {
+/* yellow #edc31c */
+/* pink #ffc2af */
+/* white #f6e5de */
+/* beige #ffefca */
+/* brown #a48f5c */
+
+.ellipse-1 {
   width: 600px;
   height: 600px;
-  background: rgba(118, 181, 245, 1);
-  top: -20vh;
-  left: 5vw;
+  background: #edc31c90;
+  top: -35vh;
+  left: 10vw;
   filter: blur(40px);
 }
 
-.ellipse-pink {
+.ellipse-2 {
   width: 600px;
   height: 600px;
-  background: rgba(66, 115, 165, 0.7);
+  background: #ffc2af90;
   top: 7vh;
-  left: -5vw;
+  left: -15vw;
+  filter: blur(60px);
 }
 
-.ellipse-orange {
-  background: rgba(198, 186, 162);
-  top: 55vh;
-  left: 25vw;
+.ellipse-3 {
+  background: #f6e5de;
+  top: 65vh;
+  left: 50vw;
+  filter: blur(40px);
 }
 
-.ellipse-purple-2 {
-  background: #9d96e49c;
-  top: 55vh;
-  left: 42vw;
+.ellipse-4 {
+  background: #a48f5cc0;
+  top: 80vh;
+  left: 70vw;
+  filter: blur(60px);
 }
 
 @media (min-width: 850px) {
@@ -55,10 +72,16 @@ body {
   }
 }
 
+/* Header */
 body #main-wrapper .container header {
   background-color: transparent;
 }
 
+/* Footer */
 footer {
   background-color: transparent;
+}
+
+body aside {
+  /* background-color: transparent !important; */
 }
