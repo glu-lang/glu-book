@@ -3,8 +3,6 @@ title: Writing a Hello World in Glu
 category: The Glu Basics
 ---
 
-# Hello World in Glu
-
 The traditional hello world program is the first program that we will write in Glu. This program will print the string "Hello, World!" to the console.
 
 ## Creating a Project Directory
