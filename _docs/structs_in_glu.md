@@ -122,7 +122,7 @@ This layout uses only 9 bytes (1 + 8), saving memory. However, accessing `b` may
 
 Using the `@packed` attribute allows you to gain memory efficiency at the cost of execution speed. This trade-off should be considered when deciding whether to pack a structure.
 
-## Overriding Operators for Structures
+## Overloading Operators for Structures
 
 Glu supports operator overloading, allowing you to define custom behavior for operators when used with your structures. Here is an example of overriding the equality operator `==` for the `Person` structure:
 
