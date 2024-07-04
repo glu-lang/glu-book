@@ -26,6 +26,14 @@ body {
   content: '';
 }
 
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]),
+  html[data-mode='dark'] {
+    body #background .ellipse {
+      display: none;
+    }
+  }
+}
 /* yellow #edc31c */
 /* pink #ffc2af */
 /* white #f6e5de */
