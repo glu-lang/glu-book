@@ -1,0 +1,95 @@
+/* background  */
+
+:root {
+  --sidebar-width: 300px;
+  --background-width: 70vw;
+  --background-height: 30vh;
+}
+
+body {
+  overflow: hidden;
+}
+
+#background {
+  position: absolute;
+}
+
+.ellipse {
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  content: '';
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html:not([data-mode]) body #background .ellipse {
+    display: none;
+  }
+}
+
+html[data-mode='dark'] body #background .ellipse {
+  display: none;
+} */
+
+/* yellow #edc31c */
+/* pink #ffc2af */
+/* white #f6e5de */
+/* beige #ffefca */
+/* brown #a48f5c */
+
+.ellipse-1 {
+  width: 500px;
+  height: 500px;
+  background: #edc31c90;
+  top: -37vh;
+  left: calc(-2vw + 150px);
+  filter: blur(40px);
+}
+
+.ellipse-2 {
+  width: 600px;
+  height: 600px;
+  background: #ffc2af90;
+  top: 7vh;
+  left: calc(-15vw + 150px);
+  filter: blur(60px);
+}
+
+.ellipse-3 {
+  background: #f6e5de;
+  top: 40vh;
+  left: calc(80vw + 150px);
+  filter: blur(40px);
+}
+
+.ellipse-4 {
+  background: #a48f5c;
+  top: 80vh;
+  left: calc(70vw + 150px);
+  filter: blur(60px);
+}
+
+/* Header */
+body #main-wrapper .container header {
+  background-color: transparent;
+}
+
+/* Footer */
+footer {
+  background-color: transparent;
+}
+
+/* sidebar */
+body aside {
+  background-color: transparent !important;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+}
+
+#avatar {
+  box-shadow: none !important;
+}
