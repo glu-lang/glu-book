@@ -92,6 +92,7 @@ collections:
       - typealiases.md
       - importing_cpp.md
       - exporting_cpp.md
+      - operators_overload.md
       - keywords.md
       - operators_and_symbols.md
   refs:
