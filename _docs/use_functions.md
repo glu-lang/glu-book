@@ -10,7 +10,7 @@ This is why functions are indispensable in Glu programming.
 
 ```glu
 func main() {
-    print("Hello World!");
+    std::print("Hello World!");
 }
 ```
 
@@ -41,13 +41,11 @@ In the following version of `my_func`, the _parameters_ `param1` and `param2` ar
 
 ```glu
 func main() {
-
     my_func(42, 42);
 }
 
 func my_func(param1: Int, param2: Int) {
-
-    print(param1 + param2); // This will print 84
+    std::print(param1 + param2); // This will print 84
 }
 ```
 
@@ -72,7 +70,8 @@ func add(a: Int, b: Int) -> Int {
 
 func main() {
     let result = add(3, 5);
-    print(result); // This will print 8
+
+    std::print(result); // This will print 8
 }
 ```
 
