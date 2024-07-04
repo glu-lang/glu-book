@@ -1,12 +1,12 @@
 ---
-title: Functions
+title: Using Functions
 category: Common Concepts
 ---
 
 You've already encountered the `main` function, the entrypoint of any Glu program, as well as the `func` keyword which is needed to declare a function.
 
-Procedural languages, like Glu, structure programs as a series of functions (also known as procedures) that call one another.
-This is why functions are indispensable in Glu programming.
+Procedural languages, like Glu, structure programs as a series of functions that call one another.
+This is why functions are essential in Glu programming.
 
 ```glu
 func main() {
@@ -16,16 +16,17 @@ func main() {
 
 ## Declare a Function
 
-To declare a function, three key components are required:
+To declare a function, four key components are required:
 - The `func` keyword
 - The function name
 - A list of any necessary parameters
+- The function potential returned value's type
 
 The body of the function is enclosed in curly brackets `{}`, which indicate to the compiler where the function begins and ends.
 
 In the example below, the function prototype of `my_func` specifies the function name and _parameters_: `param1` and `param2`, both of which are of type `Int`.
 
-![Glu Function Declaration Explanation](/assets/img/function_explaining.png)
+![Representation of the differents key components required by a function declaration in Glu](/assets/img/function_explaining.png)
 
 A function can be declared without being immediately implemented.
 In such cases, a semicolon `;` is used instead of curly brackets.
@@ -41,15 +42,28 @@ In the following version of `my_func`, the _parameters_ `param1` and `param2` ar
 
 ```glu
 func main() {
-    my_func(42, 42);
+    my_func(42, 42); // This will print 84
 }
 
 func my_func(param1: Int, param2: Int) {
-    std::print(param1 + param2); // This will print 84
+    std::print(param1 + param2);
 }
 ```
 
 This function will print `84` as `my_func` simply adds `param1` to `param2`.
+
+But, optional parameters can be specified in Glu by specifying default values to any function parameter:
+
+```glu
+func main() {
+    my_func(2); // This will print 44
+}
+
+func my_func(param1: Int = 42, param2: Int) {
+    std::print(param1 + param2);
+}
+```
+With this declaration, you do not need to provide `param1` a value, as it is done in the `main` func.
 
 
 Since the types of `my_func` _parameters_ are explicitly specified as `Int`, you must provide strictly `Int` typed values.
@@ -77,3 +91,32 @@ func main() {
 
 In this example, the `add` function takes two parameters, `a` and `b`, both of type `Int`, and returns an `Int`.
 The `-> Int` syntax indicates that the function returns an integer. Within the function body, the `return` keyword is used to return the sum of `a` and `b`.
+
+
+Also, note that the `return` keyword doesn't have to be at the end of the function.
+
+```glu
+func main() {
+    let x: Int = 42;
+
+    if x == 42 {
+        return 0;
+    }
+
+    return 1;
+}
+```
+
+### Conclusion
+
+Understanding the structure and syntax of functions is crucial in Glu programming.
+Functions enable modular and reusable code, making programs more efficient and easier to manage.
+
+
+Functions are defined with four key components: the `func` keyword, the function name, parameters, and the return type, with the body enclosed in curly brackets.
+Also, parameters are special variables required by some functions, and default values can make those parameters optional.
+Functions can also return values, specified by an arrow `->` and the `return` keyword.
+
+
+The examples provided illustrate how to declare and define functions, specify parameters, and use return values effectively.
+Understanding these elements allows you to write modular, efficient, and reusable code in Glu, ensuring your programs are both robust and well-organized.
