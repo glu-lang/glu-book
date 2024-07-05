@@ -93,6 +93,7 @@ collections:
       - enums.md
       - typealiases.md
       - operators_overload.md
+      - overloading_functions.md
       - templating_structures.md
       - importing_cpp.md
       - exporting_cpp.md
