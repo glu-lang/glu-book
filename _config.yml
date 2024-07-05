@@ -102,6 +102,7 @@ collections:
     output: true
     order:
       - compiler_architecture.md
+      - bnf.md
 
 defaults:
   - scope:
