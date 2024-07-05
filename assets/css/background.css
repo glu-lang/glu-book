@@ -7,7 +7,7 @@
 }
 
 body {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #background {
