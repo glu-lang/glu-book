@@ -130,7 +130,7 @@ std::free(array);
 
 In this example, the `alloc` function allocates an array of 10 integers on the heap and returns a unique pointer to that memory. The elements of the array are default-initialized, the default value for integers being 0. The array can be accessed and modified using the subscript operator `[]`. Just like with single values, the memory for the array must be freed using the `free` function for the code to compile.
 
-Arrays can also be resized using the `std::realloc` function. The `realloc` function takes a pointer to an existing array, the new size of the array, and returns a new pointer to the resized array. Because they all are unique pointers, the compiler can check that the old pointer is not used after the reallocation.
+Arrays can also be resized using the `std::realloc` function. The `realloc` function takes a pointer to an existing array, the new size of the array, and returns a new pointer to the resized array. Because both are unique pointers, the compiler can check that the old pointer is not used after the reallocation.
 
 ```glu
 let array: *unique Int = std::alloc<Int>(10);
