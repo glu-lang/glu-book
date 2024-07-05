@@ -7,10 +7,10 @@ Template functions (or generic functions) allow you to write functions that can 
 
 ## Definition of a Template Function
 
-Let's define a simple template function called templatedPrint that returns its input argument:
+Let's define a simple template function called id that returns its input argument:
 
 ```glu
-func templatedPrint<T>(a: T) -> T {
+func id<T>(a: T) -> T {
     std::print(a);
     return a;
 }
@@ -21,10 +21,10 @@ Here's an explanation of the components:
 ## Template Declaration:
 
 ```glu
-func templatedPrint<T>
+func id<T>
 ```
 
-This declares a template function named templatedPrint with a generic type T. The type T can be any type (e.g., Int, String, custom struct, etc.).
+This declares a template function named id with a generic type T. The type T can be any type (e.g., Int, String, custom struct, etc.).
 
 Function Parameters and Return Type:
 
@@ -44,20 +44,20 @@ The function simply returns the input parameter a.
 
 Using the Template Function
 
-You can use the template function templatedPrint with different types of data. Here are a few examples:
+You can use the template function id with different types of data. Here are a few examples:
 
 ### Using the Function with an Integer:
 
 ```glu
-let intValue = templatedPrint(42)
-print(intValue) // Output: 42
+let intValue : Int = id<Int>(42)
+std::print(intValue) // Output: 42
 ```
 
 ### Using the Function with a String:
 
 ```glu
-let stringValue = templatedPrint("Hello, world!")
-print(stringValue) // Output: Hello, world!
+let stringValue : String = id<String>("Hello, world!")
+std::print(stringValue) // Output: Hello, world!
 ```
 
 ### Using the Function with a Custom Type:
@@ -68,19 +68,21 @@ struct Person {
     name: String
     age: Int
 }
-```
+
 
 let person = Person(name: "Alice", age: 30)
-let personValue = templatedPrint(person)
+let personValue = id(person)
 print(personValue.name) // Output: Alice
 print(personValue.age)  // Output: 30
-Example of Using the Template Function in a More Complex Scenario
+```
 
-You can use the templatedPrint function in a more complex scenario to demonstrate its flexibility and reusability:
+## Example of Using the Template Function in a More Complex Scenario
+
+You can use the id function in a more complex scenario to demonstrate its flexibility and reusability:
 
 ```glu
 // Generic function
-func templatedPrint<T>(a: T) -> T {
+func id<T>(a: T) -> T {
     return a;
 }
 
@@ -91,25 +93,25 @@ struct Person {
 }
 
 // Instances
-let intValue = 42
-let stringValue = "Hello, world!"
-let personValue = Person(name: "Alice", age: 30)
+let intValue : Int = 42
+let stringValue : String = "Hello, world!"
+let personValue : Person = { "Alice", 30 }
 
-// Using the templatedPrint function
-let newIntValue = templatedPrint(intValue)
-let newStringValue = templatedPrint(stringValue)
-let newPersonValue = templatedPrint(personValue)
+// Using the id function
+let newIntValue  id<Int>(intValue)
+let newStringValue = id<String>(stringValue)
+let newPersonValue = id<Person>(personValue)
 
 // Printing the results
-print(newIntValue)         // Output: 42
-print(newStringValue)      // Output: Hello, world!
-print(newPersonValue.name) // Output: Alice
-print(newPersonValue.age)  // Output: 30
+std::print(newIntValue)         // Output: 42
+std::print(newStringValue)      // Output: Hello, world!
+std::print(newPersonValue.name) // Output: Alice
+std::print(newPersonValue.age)  // Output: 30
 ```
 
 In this example:
 
-The templatedPrint function is used with an integer, a string, and a custom type (Person).
+The id function is used with an integer, a string, and a custom type (Person).
 The results are printed, demonstrating that the function works correctly with different types of data.
 
 ## Conclusion
