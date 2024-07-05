@@ -1,6 +1,6 @@
 ---
  title: Overloading Functions
- category: Polymorphisme
+ category: Polymorphism
 ---
 
 In GLU, function overloading allows you to define multiple functions with the same name but different parameters. This enables polymorphism, where the correct function to call is determined by the arguments passed. Here's how you can overload functions in GLU.
