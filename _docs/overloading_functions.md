@@ -27,6 +27,7 @@ func calculateArea(length: Float, width: Float) -> Float {
 ```
 
 * Function to Calculate the Area of a Circle
+
 ```glu
 func calculateArea(radius: Float) -> Float {
     return 3.14159 * radius * radius;
@@ -38,11 +39,11 @@ func calculateArea(radius: Float) -> Float {
 When you call the `calculateArea` function, GLU determines which version to execute based on the provided arguments.
 
 ```glu
-let rectangleArea = calculateArea(5, 3);  // Calls the first version, returns 15                                // As an Int
+let rectangleArea = calculateArea(5, 3);    // Calls the first version, as an Int, returns 15
 
-let rectangleArea = calculateArea(5.3, 3.8);  // Calls the first version, returns 20.14                                 // As a Float
+let rectangleArea = calculateArea(5.3, 3.8);    // Calls the first version, as a Float, returns 20.14
 
-let circleArea = calculateArea(4.0);                // Calls the second version, returns 50.26544
+let circleArea = calculateArea(4.0);    // Calls the second version, returns 50.26544
 ```
 
 ### Key Points
