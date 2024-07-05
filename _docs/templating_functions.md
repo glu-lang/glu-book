@@ -3,11 +3,11 @@ title: Templating Functions
 category: Templates
 ---
 
-Template functions (or generic functions) allow you to write functions that can operate on different types of data while maintaining type safety. This makes your code more flexible and reusable. In our language, the syntax for defining a template function is straightforward. Here’s how you can define and use a template function.
+Templated functions (or generic functions) allow you to write functions that can operate on different types of data while maintaining type safety. This makes your code more flexible and reusable. In Glu, the syntax for defining a template function is straightforward. Here’s how you can define and use a template function.
 
 ## Definition of a Template Function
 
-Let's define a simple template function called id that returns its input argument:
+Let's define a simple templated function named `id` that returns its input argument:
 
 ```glu
 func id<T>(a: T) -> T {
@@ -18,15 +18,12 @@ func id<T>(a: T) -> T {
 
 Here's an explanation of the components:
 
-## Template Declaration:
 
 ```glu
 func id<T>
 ```
 
 This declares a template function named id with a generic type T. The type T can be any type (e.g., Int, String, custom struct, etc.).
-
-Function Parameters and Return Type:
 
 ```glu
 (a: T) -> T
@@ -42,25 +39,25 @@ return a;
 
 The function simply returns the input parameter a.
 
-Using the Template Function
+## Using the Template Function
 
 You can use the template function id with different types of data. Here are a few examples:
 
-### Using the Function with an Integer:
+Using the Function with an Integer:
 
 ```glu
 let intValue : Int = id<Int>(42)
 std::print(intValue) // Output: 42
 ```
 
-### Using the Function with a String:
+Using the Function with a String:
 
 ```glu
 let stringValue : String = id<String>("Hello, world!")
 std::print(stringValue) // Output: Hello, world!
 ```
 
-### Using the Function with a Custom Type:
+Using the Function with a Custom Type:
 Let's assume we have a Person structure:
 
 ```glu
@@ -70,10 +67,10 @@ struct Person {
 }
 
 
-let person = Person(name: "Alice", age: 30)
-let personValue = id(person)
-print(personValue.name) // Output: Alice
-print(personValue.age)  // Output: 30
+let person : Person = { "Alice", 30 }
+let personValue = id<Person>(person)
+std::print(personValue.name) // Output: Alice
+std::print(personValue.age)  // Output: 30
 ```
 
 ## Example of Using the Template Function in a More Complex Scenario
