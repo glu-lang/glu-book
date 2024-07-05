@@ -11,7 +11,6 @@ Let's define a simple templated function named `id` that returns its input argum
 
 ```glu
 func id<T>(a: T) -> T {
-    std::print(a);
     return a;
 }
 ```
