@@ -90,6 +90,8 @@ collections:
       - structs.md
       - enums.md
       - typealiases.md
+      - operators_overload.md
+      - templating_structures.md
       - importing_cpp.md
       - exporting_cpp.md
       - keywords.md
