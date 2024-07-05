@@ -10,7 +10,7 @@ The GLU Language is a low-level programming language designed to unify projects 
 
 * Marouan Bader https://github.com/badermarouan
 
-* Emil Perdersen https://github.com/Snowy1803
+* Emil Pedersen https://github.com/Snowy1803
 
 * Jeremy Elalouf https://github.com/jeremyelalouf
 
