@@ -5,7 +5,7 @@
 
 Operator overloading allows you to redefine the behavior of operators for specific data types. This makes your code more intuitive and readable. In our language, the syntax for overloading an operator is straightforward.
 
-# Example of Overloading the == Operator
+## Example of Overloading the == Operator
 Here’s an example of overloading the equality operator (==) for a structure.
 
 Let's assume we have a Person structure defined as follows:
@@ -26,14 +26,14 @@ operator ==(a: Person, b: Person) -> Bool {
 
 Here's a step-by-step explanation of this overload:
 
-## 1. Declaration of the Overload Function:
+### Declaration of the Overload Function:
 
 ```glu
 operator ==(a: Person, b: Person) -> Bool
 ```
 This line declares a new overload function for the == operator. The function takes two arguments, a and b, of type Person and returns a boolean (Bool).
 
-## 2. Implementation of the Function:
+### Implementation of the Function:
 
 ```glu
 return a.name == b.name && a.age == b.age;
