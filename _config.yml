@@ -87,6 +87,7 @@ collections:
       - use_functions.md
       - comments.md
       - control_flow.md
+      - memory_management.md
       - structs.md
       - enums.md
       - typealiases.md
