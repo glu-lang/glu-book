@@ -2,7 +2,7 @@
 icon: fas fa-book
 title: The Book
 order: 0
-categories: ['Basics', 'Common Concepts', 'Data Types', 'Templates', 'Imports and Modules', 'Appendix']
+categories: ['Basics', 'Common Concepts', 'Data Types', 'Polymorphisme', 'Imports and Modules', 'Appendix']
 ---
 
 Below, every chapter of the Glu Programming Language Book.
