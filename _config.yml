@@ -89,10 +89,11 @@ collections:
       - control_flow.md
       - memory_management.md
       - structs.md
-      - templating_functions.md
       - enums.md
       - typealiases.md
       - operators_overload.md
+      - overloading_functions.md
+      - templating_functions.md
       - templating_structures.md
       - importing_cpp.md
       - exporting_cpp.md

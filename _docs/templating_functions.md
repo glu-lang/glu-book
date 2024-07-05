@@ -1,6 +1,6 @@
 ---
 title: Templating Functions
-category: Templates
+category: Polymorphism
 ---
 
 Templated functions (or generic functions) allow you to write functions that can operate on different types of data while maintaining type safety. This makes your code more flexible and reusable. In Glu, the syntax for defining a template function is straightforward. Here’s how you can define and use a template function.

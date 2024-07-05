@@ -1,6 +1,6 @@
 ---
  title: Templating Structures
- category: Templates
+ category: Polymorphism
 ---
 
 Templates allow you to define generic structures that can handle different data types without rewriting the structure for each type. This makes your code more reusable and flexible. In our language, the syntax for defining a template structure is straightforward. Here’s how to use template structures.
