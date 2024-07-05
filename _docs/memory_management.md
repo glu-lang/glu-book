@@ -45,27 +45,27 @@ Note that you can only get the address of a variable allocated on the stack, whi
 
 ## Heap Allocation
 
-Allocating memory on the heap can be done using the `alloc` function. The `alloc` templated function allocates memory for a single value of the specified type on the heap and returns a pointer to that memory.
+Allocating memory on the heap can be done using the `std::alloc` function. The `alloc` templated function allocates memory for a single value of the specified type on the heap and returns a pointer to that memory.
 
 ```glu
 func main() {
-    var x: *unique Int = alloc<Int>();
+    var x: *unique Int = std::alloc<Int>();
     x.* = 42;
     std::print(x.*); // Output: 42
-    free(x);
+    std::free(x);
 }
 ```
 
-The `alloc` function returns a unique pointer, which is a linear type: it must be transferred exactly once. This way, the compiler ensures that the memory is only freed once and that there are no memory leaks.
+The `std::alloc` function returns a unique pointer, which is a linear type: it must be transferred exactly once. This way, the compiler ensures that the memory is only freed once and that there are no memory leaks.
 
 If you need to leak the memory, you can use the `release` function to release the memory from the unique pointer. This can be necessary when you want to transfer ownership of the memory to another part of the program, which uses a different memory management strategy. The `release` function consumes the unique pointer and returns the raw pointer, which can then be used to free the memory manually.
 
 ```glu
 func main() {
-    let x: *unique Int = alloc<Int>();
+    let x: *unique Int = std::alloc<Int>();
     x.* = 42;
     std::print(x.*); // Output: 42
-    let raw: *Int = release(x);
+    let raw: *Int = std::release(x);
     // Do something with raw
     // Note: The compiler will not check if raw is freed correctly.
     // Only use this if you know what you are doing.
@@ -81,7 +81,7 @@ Here is an example of transferring a unique pointer between functions:
 ```glu
 // This returns a unique pointer to an integer, which means that the ownership of the memory is transferred to the caller.
 func createCounter() -> *unique Int {
-    let counter: *unique Int = alloc<Int>();
+    let counter: *unique Int = std::alloc<Int>();
     counter.* = 0;
     return counter;
 }
@@ -95,7 +95,7 @@ func main() {
     let counter: *unique Int = createCounter();
     incrementCounter(counter);
     std::print(counter.*); // Output: 1
-    free(counter);
+    std::free(counter);
 }
 ```
 
@@ -109,7 +109,7 @@ Note that move semantics also exist within the same function. For example, you c
 func main() {
     let counter: *unique Int = createCounter();
     let moved: *unique Int = counter;
-    free(moved);
+    std::free(moved);
 }
 ```
 
@@ -117,25 +117,25 @@ In this example, the `counter` binding is moved to the `moved` binding, which me
 
 ## Allocating Arrays
 
-You can also allocate arrays on the heap using the `calloc` function. The `calloc` function allocates a contiguous array of memory for the specified number of elements of the specified type, and default-initializes each element. A unique pointer to the array is returned.
+You can also allocate arrays on the heap using the same `std::alloc` function. The `alloc` function takes an optional argument for the number of elements of the specified type to allocate in a contiguous array of memory, and default-initializes each element. A unique pointer to the first element of the array is returned.
 
 ```glu
-let array: *unique Int = calloc<Int>(10);
+let array: *unique Int = std::alloc<Int>(10);
 std::assert(array[0] == 0);
 std::assert(array[9] == 0);
 array[0] = 42;
 std::print(array[0]); // Output: 42
-free(array);
+std::free(array);
 ```
 
-In this example, the `calloc` function allocates an array of 10 integers on the heap and returns a unique pointer to that memory. The elements of the array are default-initialized, the default value for integers being 0. The array can be accessed and modified using the subscript operator `[]`. Just like with single values, the memory for the array must be freed using the `free` function for the code to compile.
+In this example, the `alloc` function allocates an array of 10 integers on the heap and returns a unique pointer to that memory. The elements of the array are default-initialized, the default value for integers being 0. The array can be accessed and modified using the subscript operator `[]`. Just like with single values, the memory for the array must be freed using the `free` function for the code to compile.
 
-Arrays can also be resized using the `realloc` function. The `realloc` function takes a pointer to an existing array, the new size of the array, and returns a new pointer to the resized array. Because they all are unique pointers, the compiler can check that the old pointer is not used after the reallocation.
+Arrays can also be resized using the `std::realloc` function. The `realloc` function takes a pointer to an existing array, the new size of the array, and returns a new pointer to the resized array. Because they all are unique pointers, the compiler can check that the old pointer is not used after the reallocation.
 
 ```glu
-let array: *unique Int = calloc<Int>(10);
+let array: *unique Int = std::alloc<Int>(10);
 array[8] = 42;
-let second: *unique Int = realloc(array, 20);
+let second: *unique Int = std::realloc(array, 20);
 // array cannot be referenced anymore, as it was moved to second
 std::assert(second[8] == 42);
 ```
@@ -147,7 +147,7 @@ In addition to unique pointers, Glu also supports shared pointers, which allow m
 Shared pointers can be created using the `alloc_shared` function, which allocates memory for a single value of the specified type on the heap and returns a shared pointer to that memory.
 
 ```glu
-let x: *shared Int = alloc_shared<Int>();
+let x: *shared Int = std::alloc_shared<Int>();
 x.* = 42;
 std::print(x.*); // Output: 42
 ```
