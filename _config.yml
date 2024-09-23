@@ -95,6 +95,7 @@ collections:
       - overloading_functions.md
       - templating_functions.md
       - templating_structures.md
+      - modules.md
       - importing_cpp.md
       - exporting_cpp.md
       - keywords.md
