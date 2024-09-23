@@ -39,7 +39,7 @@ Instruction result identifiers start with a `%` character, function identifiers 
 
 The top level syntax of GIL is the same as Glu: the same syntax is used for imports and type definitions, although they can have more annotations in GIL. The main difference is in the function definitions, which are written in SSA form.
 
-```glu
+```gil
 // This part is the same in Glu and GIL:
 import std;
 
@@ -54,7 +54,9 @@ func open_file(name: String) -> File {
     ...
 }
 // In GIL:
-gil @open_file(name: String) : $(String) -> File {
+gil @open_file : $(String) -> File {
+entry(%0: String):
+    debug %0 : $String, arg "name", loc "file.glu":11:16
     ...
 }
 ```
