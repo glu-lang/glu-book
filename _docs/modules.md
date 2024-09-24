@@ -16,8 +16,12 @@ The simplest way to import a module is using the `import` statement followed by 
 For example, let's say you have a file called `file.glu`:
 
 ```glu
-func function() {
+func helloFromFile() {
     std::print("Hello from file!");
+}
+
+func byeFromFile() {
+    std::print("Bye from file!");
 }
 ```
 
@@ -27,10 +31,10 @@ To use this function in another file, simply import the file and call the functi
 import file;
 
 func main() {
-    file::function(); // This will print "Hello from file!"
+    file::helloFromFile(); // This will print "Hello from file!"
 }
 ```
-Here, `file::function()` is used to call `function` from the `file` module. The `::` operator is used to access functions, constants, and other definitions from the imported module.
+Here, `file::helloFromFile()` is used to call `helloFromFile` from the `file` module. The `::` operator is used to access functions, constants, and other definitions from the imported module.
 
 ## Renaming Imports
 
@@ -40,36 +44,36 @@ Sometimes, the module name can be long or ambiguous. To make the code more reada
 import file as toto;
 
 func main() {
-    toto::function();
+    toto::helloFromFile();
 }
 ```
-In this example, `file` is renamed to `toto`, so you can access the `function()` using `toto::function()`. This is particularly useful when you have multiple modules with similar names or when you want to shorten the module name for convenience.
+In this example, `file` is renamed to `toto`, so you can access the `helloFromFile()` using `toto::helloFromFile()`. This is particularly useful when you have multiple modules with similar names or when you want to shorten the module name for convenience.
 
 ## Importing Specific Functions
 
 If you only need a specific function from a module, you can import it directly:
 ```glu
-import file::function;
+import file::helloFromFile;
 
 func main() {
-    function();
+    helloFromFile();
 }
 ```
-By importing only `function()`, you don't need to reference the module name when calling the function. This can make the code cleaner, especially when working with frequently used functions.
+By importing only `helloFromFile()`, you don't need to reference the module name when calling the function. This can make the code cleaner, especially when working with frequently used functions.
 
 ## Importing Multiple Items with Renaming
 
 You can also import multiple items from a module and rename them individually. This can be useful when you need to resolve naming conflicts or want to clarify the usage of certain functions:
 
 ```glu
-import file::{function, function1 as function2};
+import file::{helloFromFile, byeFromFile as bye};
 
 func main() {
-    function();
-    function2(); // This calls function1, but it's renamed to function2.
+    helloFromFile();
+    bye(); // This calls byeFromFile, but it's renamed to bye.
 }
 ```
-In this case, `function()` is imported as is, but `function1()` is renamed to `function2()`. This allows you to use more descriptive or context-specific names in your code.
+In this case, `helloFromFile()` is imported as is, but `byeFromFile()` is renamed to `bye()`. This allows you to use more descriptive or context-specific names in your code.
 
 ## Importing Structs and Enums
 
@@ -122,7 +126,21 @@ func printStatus(value: Status) {
 }
 ```
 
-This functions uses the imported `Status` enum and checks whether it holds a Succes or a Failure value to print a status message.
+If you only need one element of the Enum you can also import it like so:
+
+```glu
+import {status::Status::SUCCESS, status::Status};
+
+func printStatus(value: Status) {
+    if value == SUCCESS {
+        std::print("Success!");
+    } else {
+        std::print("Failure!");
+    }
+}
+```
+
+These functions uses the imported `Status` enum and checks whether it holds a SUCCESS or a FAILURE value to print a status message.
 
 ## Importing Everything
 
