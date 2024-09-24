@@ -82,6 +82,16 @@ merge(%3: Int):
 
 In this example, the `entry` block is the starting point of the function. It contains a conditional branch (`cond_br`) that jumps to either the `then` or `else` block based on the value of the boolean argument. Both the `then` and `else` blocks end with an unconditional branch (`br`) to the `merge` block, which contains the return instruction. Conditional branches are used to implement control flow constructs like `if` and `while` statements. Both branches cannot be the same. The unconditional branch is used to jump to a specific block, and supplies the arguments for the block.
 
+In GIL, basic blocks are named with a label followed by a colon (`:`). The label is used to refer to the block in branch instructions. Basic blocks can have multiple arguments, which are the values passed to the block from the previous block. The first block in a function is the entry point and has as many arguments as the function parameters.
+
+The same function in Glu would look like this:
+
+```glu
+func select(cond: Bool, a: Int, b: Int) -> Int {
+    return cond ? a : b;
+}
+```
+
 ## Instructions
 
 GIL instructions are divided into several categories based on their purpose:
@@ -107,12 +117,12 @@ Where:
  - `arg0`, `arg1`, `arg2`, ... are the arguments to the instruction.
  - `loc "file.glu":42:3` is the location in the source code the instruction was generated from (file, line, and column).
 
-Some instruction don't have a result:
+Some instruction don't have a result (such as `return` or `debug`):
 ```gil
 instruction_name arg0, arg1, arg2, ..., loc "file.glu":42:3
 ```
 
-Some can have multiple results:
+Some can have multiple results (such as `struct_destructure`):
 ```gil
 %result1, %result2 = instruction_name arg0, arg1, arg2, ..., loc "file.glu":42:3
 ```
@@ -171,6 +181,8 @@ The `integer_literal` instruction creates a constant integer value of a specifie
 %3 = integer_literal $Int8, -7
 ```
 
+The first argument is the type of the integer value result (Int, UInt, Int8, ...), and the second argument is the integer value.
+
 #### `float_literal`
 
 The `float_literal` instruction creates a constant floating-point value of a specified floating-point type.
@@ -180,6 +192,8 @@ The `float_literal` instruction creates a constant floating-point value of a spe
 %2 = float_literal $Double, 2.71828
 ```
 
+The first argument is the type of the floating-point result (Float, Double, Float80, ...), and the second argument is the floating-point value.
+
 #### `string_literal`
 
 The `string_literal` instruction creates a constant string value.
@@ -188,9 +202,11 @@ The `string_literal` instruction creates a constant string value.
 %1 = string_literal $String, "Hello, world!"
 ```
 
+The first argument is the type of the string result (String, *Char, ...), and the second argument is the content.
+
 #### `function_ptr`
 
-The `function_ptr` instruction creates a constant function pointer value.
+The `function_ptr` instruction creates a constant function pointer value from a global function or operator.
 
 ```gil
 %1 = function_ptr @main : $() -> Void
@@ -269,8 +285,9 @@ The call to the `+` function is not optimized out in the second example because 
 The `call` instruction is used to call a function or an operator. It takes the function or operator name, and the arguments to the function or operator.
 
 ```gil
+call @std::print : $(String) -> Void, %0 : $String
 %3 = call @+ : $(Int, Int) -> Int, %1 : $Int, %2 : $Int
-%4 = call @std::print : $(String) -> Void, %0 : $String
+call %4 : $*(String) -> Void, %0 : $String
 ```
 
 The first argument can be:
@@ -278,11 +295,11 @@ The first argument can be:
  - An operator name, starting with `@`, and having a function type.
  - A local function pointer, starting with `%`, and having a function pointer type.
 
-The following arguments must match the function type's argument types. The result type of the instruction is the return type of the function.
+The following arguments must match the function type's argument types. The result type of the instruction is the return type of the function. For void functions, no result is returned.
 
 ### Conversion Instructions
 
-Conversion instructions are used to convert values between different types. They have no side effects and return a value.
+Conversion instructions are used to convert values between different types. All conversion instructions have two arguments: the destination type, and the value to convert. The result type is the destination type. They have no side effects.
 
 #### `cast_int_to_ptr`
 
