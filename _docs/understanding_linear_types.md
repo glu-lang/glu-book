@@ -7,7 +7,7 @@ Linear types are a type system that restricts the use of resources to prevent re
 
 ## What are Linear Types?
 
-Linear types are a type system that enforces the "linear use" of resources. In a linear type system, each resource can only be used once and only once. This means that once a resource is consumed, it cannot be reused or duplicated. Linear types prevent resource leaks by ensuring that resources are properly managed and released.
+Linear types are a type system that enforces the "linear use" of resources. In a linear type system, each resource can only be used **once and only once**. This means that once a resource is consumed, it cannot be reused or duplicated. Linear types prevent resource leaks by ensuring that resources are properly managed and released.
 
 In Glu, linear types are used to manage resources that require explicit cleanup, such as file handles, network sockets, and memory. By using linear types, you can ensure that resources are properly released and prevent memory leaks and other resource-related issues.
 
@@ -17,13 +17,13 @@ In Glu, linear types are declared using the `@linear` attribute. This attribute 
 
 ```glu
 @linear struct LinearIntPtr {
-    value: *Int;
+    value: *Int,
 }
 ```
 
 In this example, the `LinearIntPtr` struct is declared as a linear type using the `@linear` attribute. The struct contains a single field `value` of type `*Int`, which is a pointer to an integer value.
 
-When working with linear types, it is important to consume resources exactly once to prevent resource leaks. This means that you must consume a linear resource exactly once and only once. If you try to use a linear resource more than once, you will get a compile-time error.
+When working with linear types, it is important to consume resources exactly once to prevent resource leaks. This means that you must consume a linear resource exactly **once and only once**. If you try to use a linear resource more than once, you will get a compile-time error.
 
 ```glu
 func createPointer(value: Int) -> LinearIntPtr {
