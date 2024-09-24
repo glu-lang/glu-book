@@ -9,9 +9,11 @@ In this article, we'll explore different ways to import modules in Glu and discu
 
 ## Basic Module Import
 
-The simplest way to import a module in Glu is using the `import` statement followed by the module's filename.
+In Glu a module is implicitly created for each file. It will include everything contained within the file, and will be named after it.
 
-For example, let's say you have a file called `file`:
+The simplest way to import a module is using the `import` statement followed by the module's filename.
+
+For example, let's say you have a file called `file.glu`:
 
 ```glu
 func function() {
@@ -74,7 +76,7 @@ In this case, `function()` is imported as is, but `function1()` is renamed to `f
 In addition to functions, Glu allows you to import structures (struct) and enumerations (enum) from other modules. This is particularly useful when you want to share data types between different parts of your project.
 
 ### Importing a Struct
-Let's say you have a `Person` struct defined in a file named `types`:
+Let's say you have a `Person` struct defined in a file named `types.glu`:
 
 ```glu
 struct Person {
@@ -88,7 +90,7 @@ You can import this `Person` struct and use it in another file:
 import types::Person;
 
 func main() {
-    let person2: john = { "John", 25 }
+    let john: john = { "John", 25 }
     std::print(john.name);
 }
 ```
@@ -97,12 +99,12 @@ Here, `Person` is imported from the `types` file, and the struct is instantiated
 
 ### Importing an Enum
 
-Enums are another important feature that can be imported using the `import` statement. Suppose you have the following enum defined in `status`:
+Enums are another important feature that can be imported using the `import` statement. Suppose you have the following enum defined in `status.glu`:
 
 ```glu
 enum Status {
-    Success,
-    Failure,
+    SUCCESS,
+    FAILURE,
 }
 ```
 
@@ -111,8 +113,8 @@ To use this enum in another file, you can import it like so:
 ```glu
 import status::Status;
 
-func print_status(value: Status) {
-    if value == Success {
+func printStatus(value: Status) {
+    if value == Status::SUCCESS {
         std::print("Success!");
     } else {
         std::print("Failure!");
@@ -133,7 +135,7 @@ func main() {
     function();
 }
 ```
-This imports all the items from `file` and allows you to use them without the module prefix. However, be cautious when using this approach, as it can lead to name conflicts if multiple modules define the same function or variable names.
+This imports all the items from the module `file` and allows you to use them without the module prefix. However, be cautious when using this approach, as it can lead to name conflicts if multiple modules define the same function or variable names.
 
 ## Why Use Modules?
 
