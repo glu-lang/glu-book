@@ -181,7 +181,7 @@ The `integer_literal` instruction creates a constant integer value of a specifie
 %3 = integer_literal $Int8, -7
 ```
 
-The first argument is the type of the integer value result (Int, UInt, Int8, ...), and the second argument is the integer value.
+The first argument is the type of the integer value result (Int, UInt64, Int8, ...), and the second argument is the integer value.
 
 #### `float_literal`
 
@@ -212,6 +212,8 @@ The `function_ptr` instruction creates a constant function pointer value from a 
 %1 = function_ptr @main : $() -> Void
 return %1 : $*() -> Void
 ```
+
+The argument is the global function, and the result type is a pointer to the function type.
 
 #### `enum_variant`
 
