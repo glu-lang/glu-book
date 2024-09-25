@@ -129,6 +129,20 @@ func printStatus(value: Status) {
 If you only need one element of the Enum you can also import it like so:
 
 ```glu
+import {status::Status, status::Status::SUCCESS};
+
+func printStatus(value: Status) {
+    if value == SUCCESS {
+        std::print("Success!");
+    } else {
+        std::print("Failure!");
+    }
+}
+```
+
+or even:
+
+```glu
 import {status::Status::SUCCESS, status::Status};
 
 func printStatus(value: Status) {
@@ -140,7 +154,7 @@ func printStatus(value: Status) {
 }
 ```
 
-These functions uses the imported `Status` enum and checks whether it holds a SUCCESS or a FAILURE value to print a status message.
+These functions use the imported `Status` enum and checks whether it holds a SUCCESS or a FAILURE value to print a status message.
 
 ## Importing Everything
 
