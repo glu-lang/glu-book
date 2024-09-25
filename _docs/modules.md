@@ -129,7 +129,7 @@ func printStatus(value: Status) {
 If you only need one element of the Enum you can also import it like so:
 
 ```glu
-import {status::Status, status::Status::SUCCESS};
+import status::{Status, Status::SUCCESS};
 
 func printStatus(value: Status) {
     if value == SUCCESS {
