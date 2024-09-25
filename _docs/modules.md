@@ -94,7 +94,7 @@ You can import this `Person` struct and use it in another file:
 import types::Person;
 
 func main() {
-    let john: john = { "John", 25 }
+    let john: Person = { "John", 25 }
     std::print(john.name);
 }
 ```
