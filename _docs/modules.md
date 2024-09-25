@@ -140,7 +140,7 @@ func printStatus(value: Status) {
 }
 ```
 
-or even:
+Or even:
 
 ```glu
 import {status::Status::SUCCESS, status::Status};
