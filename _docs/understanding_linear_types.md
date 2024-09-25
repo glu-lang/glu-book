@@ -1,13 +1,19 @@
 ---
 title: Understanding Linear Types
-category: Common Concepts
+category: Data Types
 ---
 
 Linear types are a type system that restricts the use of resources to prevent resource leaks and ensure safe memory management. In Glu, linear types are used to manage resources like file handles, network sockets, and memory.
 
 ## What are Linear Types?
 
-Linear types are a type system that enforces the "linear use" of resources. In a linear type system, each resource can only be used **once and only once**. This means that once a resource is consumed, it cannot be reused or duplicated. Linear types prevent resource leaks by ensuring that resources are properly managed and released.
+Linear types are a system that enforces strict control over resource usage. In a linear type system, each resource must be used **exactly once**—no more, no less. Once a resource is consumed, it cannot be reused, copied, or discarded. This ensures proper management and automatic cleanup of resources, preventing issues like memory leaks.
+
+##### Difference with Affine and Relevant Types
+
+- Affine types are similar to linear types but less strict: they allow each resource to be used at most once. If a resource isn’t used, that’s acceptable, but it can never be duplicated.
+
+- Relevant types, on the other hand, allow resources to be used any number of times, but they can’t be discarded. This ensures that a resource is always used in the program but doesn’t limit how often.
 
 In Glu, linear types are used to manage resources that require explicit cleanup, such as file handles, network sockets, and memory. By using linear types, you can ensure that resources are properly released and prevent memory leaks and other resource-related issues.
 
@@ -42,9 +48,9 @@ func main() {
 }
 ```
 
-In this example, the `createPointer` function creates a `LinearIntPtr` struct and returns it. The `usePointer` function takes a `LinearIntPtr` struct as an argument and consumes it. Once the `LinearIntPtr` struct is consumed by the `usePointer` function, it cannot be reused or duplicated.
+In this example, the `createPointer` function creates a value of type `LinearIntPtr` and returns it. The `usePointer` function takes a `LinearIntPtr` as an argument and consumes it (as it is not taking a reference to it). Once it’s consumed by the `usePointer` function, it cannot be reused or duplicated.
 
-But, if you not use the `LinearIntPtr` struct, you will get a compile-time error. This is because linear types must be consumed exactly once to prevent resource leaks and ensure proper cleanup. If you don't want to consume the linear type, you can use the `std::discard` function.
+But, if you don’t use the value of type `LinearIntPtr`, you will get a compile-time error. This is because linear values must be consumed exactly once to prevent resource leaks and ensure proper cleanup. If you don't want to consume the value, you can use the `std::discard` function to leak it.
 
 ```glu
 func main() {
@@ -56,8 +62,6 @@ func main() {
 }
 ```
 
-In this example, the `std::discard` function is used to consume the `LinearIntPtr` struct without using it. This allows you to discard the linear resource and prevent a compile-time error. However, be aware that this will **leak the value**, so use it only if you know what you are doing.
-
 ## Conclusion
 
-Linear types are a powerful feature of Glu that help prevent resource leaks and ensure safe memory management. By enforcing the "linear use" of resources, linear types help you manage resources like file handles, network sockets, and memory more effectively. When working with linear types, it is important to consume resources exactly once to prevent resource leaks and ensure proper cleanup. Linear types are a valuable tool for managing resources in Glu and improving the reliability and safety of your code.
+Linear types are a powerful feature of Glu that allow you to manage resources safely and prevent resource leaks. By enforcing strict control over resource usage, linear types ensure that resources are properly consumed and automatically cleaned up. This helps to prevent memory leaks and other resource-related issues, making your programs more robust and reliable. Linear types are particularly useful when working with resources that require explicit cleanup, such as file handles, network sockets, and memory. By using linear types, you can ensure that your programs are more secure and maintainable.
