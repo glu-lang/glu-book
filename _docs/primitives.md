@@ -1,17 +1,17 @@
 ---
-title: Understanding Primitive
+title: Understanding Primitives
 category: Data Types
 ---
 
-"Primitive" refers to the simplest and most basic data types in programming that are built into a language and are not 
-composed of other types. They represent the most fundamental forms of data and are directly supported by the hardware.
+Primitive types refer to the simplest and most basic data types in programming that are built into a language and are not 
+composed of other types. They represent the most fundamental forms of data in the language.
 
 ## Primitive Types
 
 ### Int (Signed Integers)
 Represent whole numbers (positive, negative, or zero).
 
-The size and range vary depending on the number of bits used.
+The size and range vary depending on the exact type:
 
 | Type  | Bit Size | Range |
 |-------|----------|-------|
@@ -34,7 +34,7 @@ The size and range also depend on the number of bits used.
 | UInt64 | 64 bits  | 0 to 18,446,744,073,709,551,615 |
 
 ### Char
-Represents a single character, such as a letter, digit, or symbol. The size typically depends on the character encoding, but it is often 1 byte (8 bits).
+Represents a single character, such as a letter, digit, or symbol. It represents one byte of unicode.
 
 Example:
 ```glu
