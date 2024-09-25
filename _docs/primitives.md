@@ -21,6 +21,8 @@ The size and range vary depending on the exact type:
 | Int32 | 32 bits  | -2,147,483,648 to 2,147,483,647 |
 | Int64 | 64 bits  | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
 
+The size of Int is usually 64 bits, but it can also be 32 bits on certain systems (e.g., 32-bit machines).
+
 ### UInt (Unsigned Integers)
 Represent whole numbers but only non-negative values (no negative numbers).
 The size and range also depend on the number of bits used.
@@ -32,6 +34,8 @@ The size and range also depend on the number of bits used.
 | UInt16 | 16 bits  | 0 to 65,535                     |
 | UInt32 | 32 bits  | 0 to 4,294,967,295              |
 | UInt64 | 64 bits  | 0 to 18,446,744,073,709,551,615 |
+
+The size of UInt is usually 64 bits, but it can also be 32 bits on certain systems (e.g., 32-bit machines).
 
 ### Char
 Represents a single character, such as a letter, digit, or symbol. It represents one byte of unicode.
