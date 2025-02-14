@@ -1,6 +1,6 @@
 ---
 title: The GIL Intermediate Language
-category: Appendix
+category: The Architecture
 ---
 
 The Glu Intermediate Language (GIL) is a low-level, single-static assignment (SSA) representation of Glu code. It is used as an intermediate representation during the compilation process and is designed to be easy to generate, optimize, and translate to and from LLVM IR.
