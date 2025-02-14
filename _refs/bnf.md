@@ -125,7 +125,7 @@ statement = block | expression_stmt | var_stmt | let_stmt | return_stmt | if_stm
 
 block = '{' statement* '}'
 empty_stmt = ';'
-expression_stmt = expression ';'
+expression_stmt = (function_call | ternary_expression | conditional_expression) ';'
 
 var_stmt = 'var' identifier (':' type)? ('=' expression)? ';'
 let_stmt = 'let' identifier (':' type)? '=' expression ';'
@@ -154,6 +154,9 @@ template_arguments = '::' '<' type (',' type)* ','? '>'
 
 binary_expression = expression binary_operator expression
 binary_operator = '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=' | '&&' | '||' | '&' | '|' | '^' | '<<' | '>>' | '...' | '..<'
+
+conditional_expression = expression conditional_operator expression
+conditional_operator = '||' | '&&'
 
 unary_expression = unary_operator expression
 unary_operator = '+' | '-' | '!' | '~' | '&'
