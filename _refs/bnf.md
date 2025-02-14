@@ -7,7 +7,7 @@ The following is the formal grammar of the Glu programming language.
 
 ## Definitions
 
-- Non-terminal symbols are enclosed in angle brackets `< >`.
+- Non-terminal symbols are simple words.
 - Terminal symbols are enclosed in single quotes `' '`.
 - A question mark `?` denotes an optional element.
 - An asterisk `*` denotes zero or more repetitions.
@@ -150,7 +150,7 @@ expression = literal | identifier | function_call | binary_expression | unary_ex
 
 function_call = namespaced_identifier template_arguments? '(' argument_list? ')'
 argument_list = expression (',' expression)* ','?
-template_arguments = '<' type (',' type)* ','? '>'
+template_arguments = '::' '<' type (',' type)* ','? '>'
 
 binary_expression = expression binary_operator expression
 binary_operator = '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=' | '&&' | '||' | '&' | '|' | '^' | '<<' | '>>' | '...' | '..<'
