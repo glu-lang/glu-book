@@ -150,7 +150,7 @@ expression = literal | identifier | function_call | binary_expression | unary_ex
 
 function_call = namespaced_identifier template_arguments? '(' argument_list? ')'
 argument_list = expression (',' expression)* ','?
-template_arguments = '::' '<' type (',' type)* ','? '>'
+template_arguments = '::<' type (',' type)* ','? '>'
 
 binary_expression = expression binary_operator expression
 binary_operator = '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=' | '&&' | '||' | '&' | '|' | '^' | '<<' | '>>' | '...' | '..<'
