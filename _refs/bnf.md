@@ -7,7 +7,7 @@ The following is the formal grammar of the Glu programming language.
 
 ## Definitions
 
-- Non-terminal symbols are enclosed in angle brackets `< >`.
+- Non-terminal symbols are simple words.
 - Terminal symbols are enclosed in single quotes `' '`.
 - A question mark `?` denotes an optional element.
 - An asterisk `*` denotes zero or more repetitions.
@@ -125,7 +125,7 @@ statement = block | expression_stmt | var_stmt | let_stmt | return_stmt | if_stm
 
 block = '{' statement* '}'
 empty_stmt = ';'
-expression_stmt = expression ';'
+expression_stmt = (function_call | ternary_expression | conditional_expression) ';'
 
 var_stmt = 'var' identifier (':' type)? ('=' expression)? ';'
 let_stmt = 'let' identifier (':' type)? '=' expression ';'
@@ -150,10 +150,13 @@ expression = literal | identifier | function_call | binary_expression | unary_ex
 
 function_call = namespaced_identifier template_arguments? '(' argument_list? ')'
 argument_list = expression (',' expression)* ','?
-template_arguments = '<' type (',' type)* ','? '>'
+template_arguments = '::<' type (',' type)* ','? '>'
 
 binary_expression = expression binary_operator expression
 binary_operator = '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=' | '&&' | '||' | '&' | '|' | '^' | '<<' | '>>' | '...' | '..<'
+
+conditional_expression = expression conditional_operator expression
+conditional_operator = '||' | '&&'
 
 unary_expression = unary_operator expression
 unary_operator = '+' | '-' | '!' | '~' | '&'

@@ -42,7 +42,7 @@ You can use the template structure to create instances that hold different types
 ### Creating an Instance with an Integer:
 
 ```glu
-let intContainer : Container<Int> = { 42 };
+let intContainer: Container<Int> = { 42 };
 std::print(intContainer.content); // Output: 42
 ```
 
@@ -67,8 +67,8 @@ struct Person {
 We can create a template structure to hold a Person instance:
 
 ```glu
-let person : Person = { "Alice", 30 };
-let personContainer : Container<Person> = { person };
+let person: Person = { "Alice", 30 };
+let personContainer: Container<Person> = { person };
 std::print(personContainer.content.name); // Output: Alice
 std::print(personContainer.content.age);  // Output: 30
 ```

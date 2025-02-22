@@ -45,14 +45,14 @@ You can use the template function id with different types of data. Here are a fe
 Using the Function with an Integer:
 
 ```glu
-let intValue : Int = id<Int>(42)
+let intValue: Int = id::<Int>(42)
 std::print(intValue) // Output: 42
 ```
 
 Using the Function with a String:
 
 ```glu
-let stringValue : String = id<String>("Hello, world!")
+let stringValue: String = id::<String>("Hello, world!")
 std::print(stringValue) // Output: Hello, world!
 ```
 
@@ -66,8 +66,8 @@ struct Person {
 }
 
 
-let person : Person = { "Alice", 30 }
-let personValue = id<Person>(person)
+let person: Person = { "Alice", 30 }
+let personValue = id::<Person>(person)
 std::print(personValue.name) // Output: Alice
 std::print(personValue.age)  // Output: 30
 ```
@@ -89,14 +89,14 @@ struct Person {
 }
 
 // Instances
-let intValue : Int = 42
-let stringValue : String = "Hello, world!"
-let personValue : Person = { "Alice", 30 }
+let intValue: Int = 42
+let stringValue: String = "Hello, world!"
+let personValue: Person = { "Alice", 30 }
 
 // Using the id function
-let newIntValue  id<Int>(intValue)
-let newStringValue = id<String>(stringValue)
-let newPersonValue = id<Person>(personValue)
+let newIntValue = id::<Int>(intValue)
+let newStringValue = id::<String>(stringValue)
+let newPersonValue = id::<Person>(personValue)
 
 // Printing the results
 std::print(newIntValue)         // Output: 42
