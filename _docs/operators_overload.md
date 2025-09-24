@@ -19,7 +19,7 @@ struct Person {
 To compare both the names and ages of two instances of Person, we can overload the == operator using the following syntax:
 
 ```glu
-operator ==(a: Person, b: Person) -> Bool {
+func ==(a: Person, b: Person) -> Bool {
     return a.age == b.age && a.name == b.name;
 }
 ```
@@ -29,7 +29,7 @@ Here's a step-by-step explanation of this overload:
 ### Declaration of the Overload Function:
 
 ```glu
-operator ==(a: Person, b: Person) -> Bool
+func ==(a: Person, b: Person) -> Bool
 ```
 This line declares a new overload function for the == operator. The function takes two arguments, a and b, of type Person and returns a boolean (Bool).
 

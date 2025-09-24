@@ -59,8 +59,11 @@ Represent real numbers (numbers with decimal points), following the IEEE 754 sta
 
 | Type   | Bit Size | Precision                           |
 |--------|----------|---------------------------------|
-|Float|32 bits	|~7 decimal places	|
-|Double|64 bits	|~15-16 decimal places		|
+|Float|32 bits	|~7 significant digits	|
+|Double|64 bits	|~15-16 significant digits		|
+|Float16|16 bits	|~3-4 significant digits	|
+|Float32|32 bits	|~7 significant digits	|
+|Float64|64 bits	|~15-16 significant digits	|
 
 
 ### Bool
