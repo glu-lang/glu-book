@@ -90,6 +90,7 @@ collections:
       - memory_management.md
       - primitives.md
       - structs.md
+      - structs_advanced.md
       - enums.md
       - typealiases.md
       - operators_overload.md
