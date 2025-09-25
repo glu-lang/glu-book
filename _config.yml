@@ -90,13 +90,13 @@ collections:
       - memory_management.md
       - primitives.md
       - structs.md
-      - structs_advanced.md
       - enums.md
       - typealiases.md
       - operators_overload.md
       - overloading_functions.md
       - templating_functions.md
       - templating_structures.md
+      - structs_advanced.md
       - modules.md
       - importing_cpp.md
       - exporting_cpp.md
