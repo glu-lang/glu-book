@@ -36,20 +36,10 @@ func main() {
 
 If you save and run this Glu program, you should receive a compilation error message indicating an attempt to modify a constant value.
 
-This example highlights how the compiler helps in spotting errors in your program.
-
-
-It's essential to catch these errors at compile-time when trying to modify a constant value, as this can prevent potential bugs.
-If one part of the code expects a value to remain constant while another part modifies it, the first part might malfunction.
-Such bugs can be tricky to diagnose, especially when the value changes intermittently.
-The Glu compiler ensures that when you declare a value as constant using `let`, it truly remains unchanged, so you don't have to monitor it manually.
-
-Now, if you need a mutable variable for exemple a counter, you must use another keyword.
-
 ## Declare a variable
 
 In Glu, the keyword for creating a variable is the `var` keyword.
-As said before, if you need a counter for instance, you must use the `var` keyword.
+As a `let` constant cannot be modified, if you need a mutable variable, you must use the `var` keyword.
 
 Let's look again the previous example but declaring the `x` variable using the `var` keyword:
 
@@ -64,9 +54,72 @@ func main() {
 
 Now, using the `var` keyword, we're allowed to change the value of `x` from `42` to `21`.
 
+## Declaring global constants and variables
+
+You can also declare global constants and variables outside of any function.
+
+```glu
+let globalConst: Int = 100;
+
+var globalVar: Int = 200;
+```
+
+These global constants and variables can be accessed from any function within the same module, or from other modules if they are marked as `public`.
+
+The initialization of global constants and variables is done when the variable is first accessed:
+
+```glu
+let globalConst: Int = initGlobalConst();
+
+func initGlobalConst() -> Int {
+    std::print("Initializing global constant");
+    return 100;
+}
+
+func main() {
+    std::print(globalConst); // This will print "Initializing global constant" followed by "100"
+    std::print(globalConst); // This will only print "100" as the constant is already initialized
+}
+```
+
+This behavior ensures that the initialization code is only executed once, the first time the global constant or variable is accessed. It can be useful for lazy initialization of resources that are expensive to create.
+
+For `let` constants, this means that the initialization code will not be executed until the constant is actually used, and after that, it cannot change again. For `var` variables, the initialization code will be executed the first time the variable is accessed, but the variable can be modified later. If the first use of the variable is a write, the initialization code will still be executed, but the initial value will be discarded.
+
+### Eager Global Constants and Variables
+
+If the initialization on first use behavior is not desired, you can use the `@eager` attribute to force the initialization of the global constant or variable at program startup:
+
+```glu
+@eager let eagerGlobalConst: Int = initEagerGlobalConst();
+
+func initEagerGlobalConst() -> Int {
+    std::print("Initializing eager global constant");
+    return 200;
+}
+
+// The line "Initializing eager global constant" will be printed before main is called
+func main() {
+    std::print(eagerGlobalConst); // This will only print "200" as the constant is already initialized
+}
+```
+
+Note that if the value is never accessed, the initialization code will still be executed at program startup.
+
+Eager initialization can only be used on global `let` constants and `var` variables. It cannot be used on local variables and constants within a function.
+
+### Compile-Time Constants
+
+Finally, you can use the `@constexpr` attribute to declare a global constant that is guaranteed to be a compile-time constant. This means that the value of the constant must be known at compile time and cannot be the result of a function call or any other runtime computation.
+
+```glu
+@constexpr let compileTimeConst: Int = 42;
+```
+
+By default, all `let` constants may be optimized as compile-time constants if the compiler can determine their value at compile time. However, using the `@constexpr` attribute explicitly indicates that the constant is intended to be a compile-time constant. If the value cannot be determined at compile time, the compiler will throw an error.
+
+The `@constexpr` attribute can be used on all variables and constants, both global and local.
+
 ## Summary
 
-In Glu, there are two keywords for declaring local symbols:
-
-- `let` for constants
-- `var` for variables
+In summary, use the `let` keyword to declare constants and the `var` keyword to declare mutable variables. You can also declare global constants and variables outside of any function, and use attributes like `@eager` and `@constexpr` to control their initialization behavior.

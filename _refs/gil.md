@@ -215,6 +215,18 @@ return %1 : $*() -> Void
 
 The argument is the global function, and the result type is a pointer to the function type.
 
+#### `global_ptr`
+
+The `global_ptr` instruction creates a constant pointer value to a global variable.
+
+```gil
+%1 = global_ptr @my_global_var, $*Int
+return %1 : $*Int
+```
+
+The first argument is the global variable, and the second argument is the pointer to the type of the global variable.
+The result type is the same as the second argument.
+
 #### `enum_variant`
 
 The `enum_variant` instruction creates a constant enum variant value.
@@ -464,6 +476,21 @@ The `ptr_offset` instruction computes the address of an element at a specified o
 ```
 
 The first argument is a pointer, and the second argument is an integer offset. The result type is the same as the first argument.
+
+## Global variables
+
+Global variables are declared using the `gil_global` keyword, followed by the variable name, type, and an optional initializer function. Global variables are mutable by default.
+
+```gil
+gil_global @my_global_var: $Int = @initialize_global_var;
+gil_global @my_uninitialized_global_var: $Int;
+
+gil @initialize_global_var : $() -> Int {
+entry:
+    %1 = integer_literal $Int, 42
+    return %1 : $Int
+}
+```
 
 ## Conclusion
 

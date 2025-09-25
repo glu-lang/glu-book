@@ -16,7 +16,6 @@ The following list contains keywords that are reserved for current or future use
 - `import` - allow to use a specific library
 - `in` - used in the `for` loop syntax
 - `let` - define a constant
-- `operator` - define or redefine an operator
 - `or` - syntax sugar for `||`
 - `and` - syntax sugar for `&&`
 - `return` - return from a function
