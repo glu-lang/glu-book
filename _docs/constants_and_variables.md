@@ -86,7 +86,9 @@ This behavior ensures that the initialization code is only executed once, the fi
 
 For `let` constants, this means that the initialization code will not be executed until the constant is actually used, and after that, it cannot change again. For `var` variables, the initialization code will be executed the first time the variable is accessed, but the variable can be modified later. If the first use of the variable is a write, the initialization code will still be executed, but the initial value will be discarded.
 
-If this behavior is not desired, you can use the `@eager` attribute to force the initialization of the global constant or variable at program startup:
+### Eager Global Constants and Variables
+
+If the initialization on first use behavior is not desired, you can use the `@eager` attribute to force the initialization of the global constant or variable at program startup:
 
 ```glu
 @eager let eagerGlobalConst: Int = initEagerGlobalConst();
@@ -104,6 +106,10 @@ func main() {
 
 Note that if the value is never accessed, the initialization code will still be executed at program startup.
 
+Eager initialization can only be used on global `let` constants and `var` variables. It cannot be used on local variables and constants within a function.
+
+### Compile-Time Constants
+
 Finally, you can use the `@constexpr` attribute to declare a global constant that is guaranteed to be a compile-time constant. This means that the value of the constant must be known at compile time and cannot be the result of a function call or any other runtime computation.
 
 ```glu
@@ -112,9 +118,7 @@ Finally, you can use the `@constexpr` attribute to declare a global constant tha
 
 By default, all `let` constants may be optimized as compile-time constants if the compiler can determine their value at compile time. However, using the `@constexpr` attribute explicitly indicates that the constant is intended to be a compile-time constant. If the value cannot be determined at compile time, the compiler will throw an error.
 
-Both `@eager` and `@constexpr` attributes can be used on global `let` constants and `var` variables. They cannot be combined, as they have opposite semantics.
-
-The `@constexpr` attribute can also be used on local variables and constants within a function, but the `@eager` attribute can only be used on global variables and constants.
+The `@constexpr` attribute can be used on all variables and constants, both global and local.
 
 ## Summary
 
