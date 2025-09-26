@@ -108,6 +108,7 @@ collections:
       - compiler_architecture.md
       - bnf.md
       - gil.md
+      - gil_ownership.md
 
 defaults:
   - scope:
