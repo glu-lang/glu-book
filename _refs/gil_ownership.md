@@ -66,7 +66,7 @@ entry(%0: $*unique Int):
 }
 ```
 
-In this example,the unique pointer `ptr` is owned by the function `takeOwnership`, which then passes it to the `drop` instruction. After the move, the original binding `%0` is no longer valid and cannot be used.
+In this example, the unique pointer `ptr` is owned by the function `takeOwnership`, which then passes it to the `drop` instruction. After the move, the original binding `%0` is no longer valid and cannot be used.
 The `drop` instruction is used to drop the ownership of the value. For unique pointers, this means deallocating the memory. After the `drop` instruction, the variable `ptr` is no longer valid either.
 
 ## Copy Semantics
