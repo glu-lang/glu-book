@@ -7,25 +7,48 @@ Structures in Glu allow you to group related data together, and you can enhance 
 
 ## Structure Ownership Types
 
-In Glu, structures can have different ownership semantics, which dictate how instances of the structure can be used. The three main ownership types are:
+In Glu, structures can have different ownership semantics, which dictate how instances of the structure can be used.
 
- - Linear: Must be used exactly once.
- - Affine: Must be used at most once.
- - Normal: Can be used freely.
+By default, structures are copyable, and can be copied, moved, and dropped implicitly. However, you can specify different ownership semantics for a structure by using attributes on the structure definition:
+- `@explicit_copy` - Requires explicit calls to the `copy` function to copy instances of the structure
+- `@no_copy` - Disables copying for the structure
+- `@explicit_drop` - Requires explicit calls to the `drop` function to destroy instances of the structure
 
-Linear and affine structures are move-only types, meaning they cannot be copied, only moved. Normal structures can be copied freely. By default, structures are normal, but you can specify the ownership type using attributes.
+## Declaring an Explicitly Copyable Structure
 
-## Declaring an Affine Structure
-
-An affine structure is a structure that must be used at most once. This is useful for managing resources that should not be duplicated, such as file handles or network connections, but can be discarded when no longer needed.
+An explicitly copyable structure is a structure that can be copied, but only through explicit calls to the `copy` function. This is useful for managing resources that have an expensive copy operation, so you want to avoid accidental copies. When a structure is marked as `@explicit_copy`, the compiler will assume you want to move it, which renders the original instance invalid after the move. If you try to use the original instance after a move, the compiler will raise an error.
 
 ```glu
-@affine struct FileHandle {
+@explicit_copy struct LargeData {
+    data: Int[1024]
+}
+
+func processData(data: LargeData) {
+    let dataCopy: LargeData = copy(data); // Explicit copy
+    // Both data and dataCopy are valid here
+}
+
+func wrongUsage() {
+    let largeData: LargeData = {};
+    let movedData: LargeData = largeData; // Moves largeData to movedData, largeData is now invalid
+    let anotherCopy: LargeData = largeData; // Error: largeData has been moved
+    // Only movedData is valid here
+}
+```
+
+This can be combined with an overloaded `copy` function to define custom copy behavior for the structure.
+
+## Declaring a Noncopyable Structure
+
+A noncopyable structure is a structure that must be used at most once, as it cannot be copied. This is useful for managing resources that should not be duplicated, such as file handles or network connections, but can be discarded when no longer needed.
+
+```glu
+@no_copy struct FileHandle {
     id: Int32
 }
 ```
 
-In this example, the structure `FileHandle` has a single field: `id` of type `Int32`. The `@affine` attribute indicates that instances of this structure cannot be copied, only moved.
+In this example, the structure `FileHandle` has a single field: `id` of type `Int32`. The `@no_copy` attribute indicates that instances of this structure cannot be copied, only moved.
 
 ```glu
 let handle1: FileHandle = openFile("example.txt");
@@ -33,12 +56,12 @@ let handle2: FileHandle = handle1; // Moves handle1 to handle2, handle1 is now i
 let handle3: FileHandle = handle1; // Error: handle1 has been moved
 ```
 
-## Declaring a Linear Structure
+## Declaring an Explicit Drop Structure
 
-A linear structure is a structure that must be used exactly once. This is useful for managing resources that require strict ownership semantics. Just like affine structures, linear structures cannot be copied, only moved, but additionally, they must be explicitly consumed or dropped.
+A structure with explicit drops is a structure that must be used. This is useful for managing resources that require strict ownership semantics. Those structures must be explicitly dropped when they are no longer needed. They can be declared using the `@explicit_drop` attribute. It can be combined with `@no_copy` to create move-only structures that must be explicitly dropped:
 
 ```glu
-@linear struct UniqueResource {
+@no_copy @explicit_drop struct UniqueResource {
     ...
 }
 
@@ -49,7 +72,7 @@ func doSomething() {
 }
 ```
 
-Unlike affine structures, if a linear structure is not moved elsewhere or dropped before it goes out of scope, the compiler will raise an error.
+With the `@explicit_drop` attribute, if the structure is not moved elsewhere or dropped before it goes out of scope, the compiler will raise an error.
 
 ## Overloading the Copy Function
 
@@ -82,7 +105,7 @@ You can overload the drop function for a structure to define custom behavior whe
 For example, for the `FileHandle` structure defined earlier, you can overload the drop function to close the file when the `FileHandle` instance is destroyed:
 
 ```glu
-struct FileHandle {
+@no_copy struct FileHandle {
     id: Int32
 }
 
@@ -102,6 +125,11 @@ func drop(str: CowString) {
     }
 }
 ```
+
+Note that when a structure contains fields that are themselves structures with overloaded drop functions, a default drop function is automatically generated that calls the drop functions of its fields. **If you overload the drop function for a structure, you are responsible for calling the drop functions of its fields**. In the case above, `CowString` only contains a raw pointer, so nothing is done by default. We could also have directly used a `*shared Char` which would have automatically handled the reference counting and memory management for us.
+
+**Important**: When a custom drop function is defined, you should also overload the copy function or mark the structure as `@no_copy`, otherwise you might see multiple drops of the same instance.
+
 
 ## Overloading the Move Function
 
