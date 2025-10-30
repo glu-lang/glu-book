@@ -40,7 +40,7 @@ Save the file.
 To compile the program, run the following command in the terminal.
 
 ```bash
-gluc main.glu
+gluc main.glu -o main
 ```
 
 This will create an executable file named `main` in the project directory.
@@ -48,10 +48,7 @@ This will create an executable file named `main` in the project directory.
 You can run the executable by running the following command.
 
 ```bash
-# Linux or macOS
 ./main
-# Windows
-.\main.exe
 ```
 
 ## Anatomy of the Program
@@ -79,4 +76,3 @@ The `std::print` function is a standard library function that prints the given s
 The `std::print` function takes a single argument, which is the string to be printed. A new line character is automatically added to the end of the string when it is printed.
 
 The string is enclosed in double quotes `""` to indicate that it is a string literal. String literals are sequences of characters enclosed in double quotes that represent text. They are used to represent text.
-

@@ -43,7 +43,7 @@ func main() {
 
 Note that you can only get the address of a variable allocated on the stack, which is not the case for `let` constants.
 
-## Heap Allocation
+## Heap Allocation (Coming Soon)
 
 Allocating memory on the heap can be done using the `std::alloc` function. The `alloc` templated function allocates memory for a single value of the specified type on the heap and returns a pointer to that memory.
 
@@ -115,7 +115,7 @@ func main() {
 
 In this example, the `counter` binding is moved to the `moved` binding, which means that the `counter` binding is no longer valid. The ownership of the memory is finally transferred to the `free` function. Note that `free(counter);` would not compile in this case, as the ownership of the memory has already been transferred to the `moved` binding.
 
-## Allocating Arrays
+## Allocating Arrays (Coming Soon)
 
 You can also allocate arrays on the heap using the same `std::alloc` function. The `alloc` function takes an optional argument for the number of elements of the specified type to allocate in a contiguous array of memory, and default-initializes each element. A unique pointer to the first element of the array is returned.
 
@@ -140,7 +140,7 @@ let second: *unique Int = std::realloc(array, 20);
 std::assert(second[8] == 42);
 ```
 
-## Shared Pointers
+## Shared Pointers (Coming Soon)
 
 In addition to unique pointers, Glu also supports shared pointers, which allow multiple parts of the program to share ownership of the memory. Shared pointers are reference-counted, which means that the memory is deallocated when the last reference to it is dropped.
 

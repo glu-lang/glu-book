@@ -102,7 +102,7 @@ In this example, the loop will print the numbers from 0 to 5, inclusive.
 
 The `while` loop is useful when you don't know in advance how many times you need to repeat a block of code. In this case, a `for` loop might be more appropriate.
 
-### The `for` Loop
+### The `for` Loop (Coming Soon)
 
 The `for` loop repeats a block of code a fixed number of times. Here is an example:
 

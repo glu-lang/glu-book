@@ -127,12 +127,12 @@ Using the `@packed` attribute allows you to gain memory efficiency at the cost o
 Glu supports operator overloading, allowing you to define custom behavior for operators when used with your structures. Here is an example of overriding the equality operator `==` for the `Person` structure:
 
 ```glu
-operator ==(a: Person, b: Person) -> Bool {
+func ==(a: Person, b: Person) -> Bool {
     return a.name == b.name && a.age == b.age;
 }
 ```
 
-In this example, the `==` operator is overridden to compare the fields name and age of two `Person` structures.
+In this example, the `==` operator is overridden to compare the fields name and age of two `Person` structures. More information about operator overloading can be found in the [Overloading Operators](./operators_overload) section.
 
 ## Example Program with Structures
 
@@ -146,7 +146,7 @@ struct Person {
 }
 
 // Override the equality operator for the Person structure
-operator ==(a: Person, b: Person) -> Bool {
+func ==(a: Person, b: Person) -> Bool {
     return a.name == b.name && a.age == b.age;
 }
 

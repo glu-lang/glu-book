@@ -138,6 +138,7 @@ func printStatus(value: Status) {
         std::print("Failure!");
     }
 }
+```
 
 These functions use the imported `Status` enum and checks whether it holds a SUCCESS or a FAILURE value to print a status message.
 

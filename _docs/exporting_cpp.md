@@ -1,9 +1,9 @@
 ---
-title: Export a Glu Library to C++
+title: Export a Glu Library to C++ (Coming Soon)
 category: Imports and Modules
 ---
 
-We can not only import C++ libraries into Glu but also export Glu libraries to C++. This also allows you to import libraries from another language, and re-export them to a second language. In this example, we will export a Glu library to C++, but the same principle can be applied to other languages.
+We can not only import C++ libraries into Glu but also implement C++ functions in Glu. This also allows you to import libraries from another language, and re-export them to a second language. In this example, we will export a Glu library to C++, but the same principle can be applied to other languages.
 
 ## Creating a C++ File
 
@@ -16,16 +16,14 @@ touch main.cpp
 Open the `main.cpp` file in a text editor and add the following code.
 
 ```cpp
-namespace libb {
-__attribute__((weak)) void funcB() {}
-}
+[[gnu::weak]] void funcB();
 
 int main() {
-    libb::funcB();
+    funcB();
 }
 ```
 
-This file declares a function `funcB` that we then call from the `main` function. The `__attribute__((weak))` attribute tells the C++ compiler that the function is weakly linked, meaning that it can be overridden by a function with the same name in another translation unit. This is necessary because the function will be overridden by our Glu implementation. The function is empty because otherwise, the C++ compiler would not emit debug information for it, which the Glu compiler needs to generate the necessary glue code.
+This file declares a function `funcB` that we then call from the `main` function. The `[[gnu::weak]]` attribute tells the C++ compiler that the function is weakly linked, meaning that it can be overridden by a function with the same name in another translation unit. This is necessary because the function will be overridden by our Glu implementation. The function is empty instead of a prototype because otherwise, the C++ compiler would not emit debug information for it, which the Glu compiler needs to generate the necessary glue code.
 
 ## Implementing an external function from Glu
 
@@ -38,8 +36,8 @@ touch libb.glu
 Open the `libb.glu` file in a text editor and add the following code.
 
 ```glu
-// This file implements function libb::funcB from main.cpp
-@implement import main::libb::funcB;
+// This file implements function funcB from main.cpp
+@implement import main::funcB;
 
 func funcB() {
     std::print("Hello from Glu!");
@@ -53,7 +51,7 @@ This file defines a function `funcB` that we will export to C++. The `@implement
 First, compile the C++ program to LLVM bitcode, which the Glu compiler can understand.
 
 ```bash
-clang++ -g -emit-llvm main.cpp -o main.bc
+clang++ -g -c -emit-llvm main.cpp -o main.bc
 ```
 
 This will create an LLVM bitcode file named `main.bc` from the C++ source file `main.cpp`. The `-g` flag is used to include debugging information in the generated bitcode file, which the Glu compiler will use to import the C++ code correctly.
@@ -61,7 +59,7 @@ This will create an LLVM bitcode file named `main.bc` from the C++ source file `
 Then, compile the Glu library to LLVM bitcode.
 
 ```bash
-gluc -I . -emit-llvm libb.glu -o main.bc
+gluc -emit-llvm-bc libb.glu -o libb.bc
 ```
 
 Then, compile and link the C++ program.

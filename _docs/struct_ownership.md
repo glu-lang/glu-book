@@ -1,7 +1,9 @@
 ---
-title: Overloading Structure Ownership Behaviors
+title: Overloading Structure Ownership Behaviors (Work in Progress)
 category: Polymorphism
 ---
+
+
 
 Structures in Glu allow you to group related data together, and you can enhance their functionality by overloading some behaviors. This includes overloading destructors, copy operations, etc.
 
