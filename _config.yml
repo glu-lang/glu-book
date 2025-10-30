@@ -82,6 +82,7 @@ collections:
   docs:
     output: true
     order:
+      - installation.md
       - hello_world.md
       - constants_and_variables.md
       - use_functions.md
