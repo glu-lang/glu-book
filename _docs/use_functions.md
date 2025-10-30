@@ -57,7 +57,7 @@ When declaring a function with parameters, the type of each parameter must be ex
 Note that the `my_func` function is defined after the `main` function in the source code, but it could have been defined before.
 Glu does not enforce the order of function definitions, only that they are defined within an accessible scope.
 
-### Optional parameters
+### Optional parameters (Coming Soon)
 
 Optional parameters can be specified in Glu by specifying default values to any function parameter:
 

@@ -1,5 +1,5 @@
 ---
-title: Templating Functions
+title: Templating Functions (Coming Soon)
 category: Polymorphism
 ---
 

@@ -16,23 +16,23 @@ cd glue-project
 
 ## Creating a C++ File
 
-Create a file named `liba.hpp` in the project directory.
+Create a file named `liba.cpp` in the project directory.
 
 ```bash
-touch liba.hpp
+touch liba.cpp
 ```
 
-Open the `liba.hpp` file in a text editor and add the following code.
+Open the `liba.cpp` file in a text editor and add the following code.
 
 ```cpp
 #include <iostream>
 
-inline void funcA() {
+void funcA() {
     std::cout << "Hello from C++!" << std::endl;
 }
 ```
 
-Save the file. This file contains a function `funcA` that we will call from Glu. Note that this file has a `.hpp` extension, which is a common convention for C++ header files, used for libraries.
+Save the file. This file contains a function `funcA` that we will call from Glu. Note that this file has a `.cpp` extension, which is a common convention for C++ source files.
 
 ## Creating a Glu File
 
@@ -59,19 +59,19 @@ The `import` statement is used to import external modules or libraries into a Gl
 To compile the program, run the following command in the terminal.
 
 ```bash
-clang++ -g -emit-llvm liba.hpp -o liba.bc
-gluc main.glu -I .
+clang++ -g -c -emit-llvm liba.cpp -o liba.bc
+GLU_LINKER='clang++' gluc main.glu -o main
 ```
 
 This will create an LLVM bitcode file named `liba.bc` from the C++ header file `liba.hpp`, using the Clang compiler. The `-g` flag is used to include debugging information in the generated bitcode file, which the Glu compiler will use to import the C++ code correctly.
 
-Then, we compile the Glu program `main.glu` using the `gluc` compiler. The `-I .` flag is used to specify the include path: the current directory. This is necessary to tell the compiler where to find the `liba` module. The `-I` flag can be used for including bitcode files, LLVM IR files, glu files, and directories containing glu files.
+Then, we compile the Glu program `main.glu` using the `gluc` compiler. You could add an `-I .` flag to specify the include path, but imports are always looked up in the current directory first. Imports can be used for including bitcode files, LLVM IR files, and glu files.
+
+The `GLU_LINKER` environment variable is set to `clang++`, which tells the Glu compiler to use the Clang C++ compiler as the linker for linking the Glu program with the C++ standard library, which is necessary when C++ libraries such as iostream are used.
 
 The `gluc` compiler will generate an executable file named `main` in the project directory, which contains the Glu program linked with the C++ library.
 
-You can run the executable with `./main` on Linux or macOS, or `.\main.exe` on Windows.
-
-The output should be:
+You can run the executable with `./main`; the output should be:
 ```
 Hello from C++!
 ```
@@ -85,24 +85,20 @@ If you want to compile the Glu program and the C++ library separately, you can d
 First, compile the C++ library to LLVM bitcode.
 
 ```bash
-clang++ -g -emit-llvm liba.hpp -o liba.bc
+clang++ -g -c -emit-llvm liba.cpp -o liba.bc
 ```
 
 Then, compile the Glu program to LLVM bitcode.
 
 ```bash
-gluc -I . -emit-llvm main.glu -o main.bc
+gluc -emit-llvm-bc main.glu -o main.bc
 ```
 
-The `main.bc` file will include the LLVM bitcode for both the Glu program and the C++ library, in a single compilation unit. By adding the `-O` flag, you can optimize the LLVM bitcode which will completely inline the C++ code into the Glu code.
+The `main.bc` file will include the LLVM bitcode for the Glu program only. The C++ library will remain in `liba.bc`.
 
-If, instead, you want to keep the C++ code separate from the Glu code, you can keep the LLVM bitcode files separate and link them together later:
+Finally, link the LLVM bitcode files together using the Clang C++ compiler.
 
 ```bash
-# Compile the C++ library to LLVM bitcode
-clang++ -g -emit-llvm liba.hpp -o liba.bc
-# Compile the Glu program to LLVM bitcode, without including the C++ code
-gluc -I . -import-as-declare -emit-llvm main.glu -o main.bc
 # Link the LLVM bitcode files
 clang++ main.bc liba.bc -o main
 ```
