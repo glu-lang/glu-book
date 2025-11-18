@@ -49,3 +49,17 @@ rustc --crate-type=lib -g --emit=llvm-bc source.rs -o source.bc
 # Rust to LL (Rust 1.82-1.90)
 rustc --crate-type=lib -g --emit=llvm-ir source.rs -o source.ll
 ```
+
+### Zig
+
+**Supported Versions (BC):** Zig 0.15  
+**Supported Versions (LL):** Zig 0.14-0.15
+
+For importing Zig source files, you need to compile them to LLVM bitcode (`.bc`) or LLVM IR (`.ll`) using `zig` with debug information enabled. The following commands can be used:
+
+```bash
+# Zig to BC (Zig 0.15)
+zig build-obj -fllvm -fno-strip %s -femit-llvm-bc=%t.bc
+# Zig to LL (Zig 0.14-0.15)
+zig build-obj -fllvm -fno-strip %s -femit-llvm-ir=%t.ll
+```
