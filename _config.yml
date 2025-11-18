@@ -110,7 +110,7 @@ collections:
       - gil_ownership.md
       - supported_files.md
       - keywords.md
-      - operators_and_symbols.md
+      - operators.md
 
 defaults:
   - scope:
