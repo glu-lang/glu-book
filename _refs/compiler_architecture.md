@@ -24,19 +24,18 @@ The code goes through the following representations during the compilation proce
 The Glu compilation process consists of the following stages:
  - **ASTGen**: `Glu Source Code -> AST`: The ASTGen stage parses the Glu source code and generates an abstract syntax tree (AST) representation of the program.
  - **GILGen**: `AST -> GIL`: The GILGen stage lowers the AST representation of the program to the Glu Intermediate Language (GIL) representation.
- - **GILOptimize**: `GIL -> GIL`: The GIL representation of the program is optimized using high-level optimizations.
+ - **GILOptimizer**: `GIL -> GIL`: The GIL representation of the program is optimized using high-level optimizations.
  - **IRGen**: `GIL -> LLVM IR`: The IRGen stage generates the LLVM IR representation of the program from the GIL representation.
 
 The LLVM infrastructure is used to optimize and generate machine code from the LLVM IR representation of the program, leveraging the powerful optimization passes and code generation capabilities of LLVM.
 
 The Glu decompilation process is similar to the compilation process but in reverse:
- - **IRDec**: `LLVM IR -> GIL`: The IRDec stage generates a GIL representation of the program from the LLVM IR representation.
- - **GILDec**: `GIL -> AST`: The GILDec stage generates an AST representation of the program from the GIL representation.
- - **ASTPrinter**: `AST -> Glu Source Code`: The ASTPrinter stage pretty prints Glu source code from the AST representation of the program.
+ - **IRDec**: `LLVM IR -> AST`: The IRDec stage generates a GIL representation of the program from the LLVM IR representation.
+ - **ASTPrinter**: `AST -> Glu Source Code`: The AST Code Printer stage pretty prints Glu source code from the AST representation of the program.
 
-The Glu compiler is designed to be modular and extensible, allowing developers to easily add optimization passes to the compilation process. The compiler is written in a modular way, with each stage implemented as a separate C++ library. This design allows developers to experiment with new optimizations and transformations without recompiling the entire compiler.
+The Glu compiler is designed to be modular and extensible, allowing developers to easily add optimization passes to the compilation process. Each stage implemented as a separate C++ library: This design allows developers to experiment with new optimizations and transformations without recompiling the entire compiler.
 
-## Debug Information
+## Debug Information (Planned)
 
 The Glu compiler keeps track of debug information throughout the compilation process to provide accurate source-level debugging information in the generated machine code. The compiler generates debug information in the LLVM IR representation of the program, which is used by the LLVM infrastructure to generate debug information in the final machine code. Debug information includes source file names, line numbers, and variable names, allowing developers to debug their programs using debuggers such as LLDB.
 
@@ -67,90 +66,70 @@ func main() {
 }
 ```
 
-To view the first stage of the compilation process, you can generate the AST representation of the program using the `-dump-ast` flag:
+To view the first stage of the compilation process, you can generate the AST representation of the program using the `-print-ast` flag:
 
 ```bash
-gluc -dump-ast main.glu
+gluc -print-ast main.glu
 ```
 
-This will output the AST representation of the program in a Lisp-like format. You can inspect the AST to understand how the Glu compiler represents the program internally.
+This will output the AST representation of the program in a Human-readable format. You can inspect the AST to understand how the Glu compiler represents the program internally.
 
-It should look like this:
-
-```lisp
-(FunctionDecl "main" type="() -> Void"
-  (CompoundStmt
-    (VarDecl let "message" type="String"
-        (StringLiteral "Hello, World!")
-    )
-    (CallExpr type="Void"
-      (ReferenceExpr "std::print")
-      (ReferenceExpr "message")
-  )
-)
-```
-
-You can then look at the GIL representation of the program using the `-emit-gil` flag. Use the `-o` flag to specify the output file, or `-` to output to the console:
+You can then look at the GIL representation of the program using the `-print-gil` flag. Use the `-o` flag to specify the output file, or leave it out to print to standard output:
 
 ```bash
-gluc -emit-gil main.glu -o -
+gluc -print-gil main.glu
 ```
 
-This will output the GIL representation of the program in a textual format. You can inspect the GIL to understand how the Glu compiler lowers the AST representation of the program to the GIL representation.
+This will output the GIL representation of the program in a textual format. You can inspect the GIL to understand how the Glu compiler lowers the AST representation of the program to the GIL representation. By default, colors are used to highlight different parts of the GIL representation when printed to a terminal that supports colors. You can disable colors using the `--color=0` flag.
 
 It should look like this:
 
 ```glu
-import std;
-
-@gil
-@location("main.glu":1:1)
-func main() {
-    %0 = string_literal "Hello, World!", location "main.glu":2:27
-    debug_value %0: String, let `message`, type String, location "main.glu":2:9
-    %1 = func_ref std::print : (String) -> Void
-    %2 = call %1(%0)
-    %3 = void
-    return %3
+gil @main : $() -> Int32 {
+entry:
+    %0 = alloca $String, loc "main.glu":2:9
+    debug %0 : $*String, let "message", loc "main.glu":2:9
+    %1 = string_literal $String, "Hello, World!", loc "main.glu":2:27
+    store [init] %1 : $String, %0 : $*String, loc "main.glu":2:9
+    %2 = load [take] %0 : $*String, loc "main.glu":3:16
+    call @print, %2 : $String, loc "main.glu":3:15
+    %3 = integer_literal $Int32, 0
+    return %3 : $Int32, loc "main.glu":1:13
 }
 ```
 
-You can then generate the LLVM IR representation of the program using the `-emit-ll` flag:
+You can then generate the LLVM IR representation of the program using the `-print-llvm-ir` flag:
 
 ```bash
-gluc -emit-ll main.glu -o main.ll
+gluc -print-llvm-ir main.glu -o main.ll
 less main.ll
 ```
 
 This will output the LLVM IR representation of the program in a textual format. It can be quite verbose, but you can inspect the LLVM IR to understand how the Glu compiler generates LLVM IR from the GIL representation of the program.
 
+Note that more intermediate compilation stages are available, such as printing the AST before semantic analysis (`-print-astgen`), printing the GIL before optimizations (`-print-gilgen`), and printing GIL between optimization passes. More flags are available; see `gluc --help` for a full list.
+
 ### Decompilation
 
-You can then decompile the LLVM IR back to GIL representation using the `-emit-gil` flag:
+You can then decompile the LLVM IR back to an AST with function declarations only, using the `-print-ast` flag on the LLVM IR file:
 
 ```bash
-gluc -emit-gil main.ll -o -
+gluc -print-ast main.ll
 ```
 
-Because the input is LLVM IR, the compiler will go through the IRDec stage to generate the GIL representation of the program. You can inspect the GIL to understand how the Glu compiler decompiles LLVM IR back to GIL representation.
+Because the input is LLVM IR, the compiler will go through the IRDec stage to generate an interface for the program.
 
-The resulting GIL should be similar to the original GIL representation of the program.
-
-Finally, you can decompile the GIL back to Glu source code using the `-emit-glu` flag:
+To view the interface as code, use the `-print-interface` flag:
 
 ```bash
-gluc -emit-glu main.ll -o -
+gluc -print-interface main.ll
 ```
 
-This will go through the IRDec, GILDec, and ASTPrinter stages to generate human-readable Glu source code from the LLVM IR representation of the program. You can inspect the decompiled Glu source code to understand how the Glu compiler generates Glu source code from the LLVM IR representation of the program.
-
-For this simple program, the decompiled Glu source code should be identical to the original Glu source code. However, for more complex programs with optimizations applied, the decompiled code may differ from the original source code.
-
-This example demonstrates the various stages of the Glu compilation process and how you can inspect the intermediate representations of the program at each stage. Understanding the compilation process can help you debug and optimize your Glu programs effectively.
+This will go through the IRDec, and ASTPrinter stages to generate a human-readable Glu interface file from the LLVM IR representation of the program. You can inspect it to understand how the Glu compiler generates Glu interfaces from an LLVM IR representation of a program.
 
 ### Decompiling LLVM IR from Other Compilers
 
-Remember that you can also decompile LLVM IR generated by other compilers back to Glu source code using the Glu compiler. This can be useful for understanding how other compilers optimize and generate code, and for integrating Glu code with code generated by other compilers.
+Remember that you can also decompile LLVM IR generated by other compilers back to Glu interfaces using the Glu compiler. This can be useful for integrating Glu code with code generated by other compilers.
 
 For example, a similar C program compiled with Clang:
 
@@ -167,13 +146,13 @@ int main() {
 Can be compiled with Clang to LLVM bitcode:
 
 ```bash
-clang -emit-llvm main.c -o main.bc
+clang -g -c -emit-llvm main.c -o main.bc
 ```
 
 And then decompiled back to Glu source code:
 
 ```bash
-gluc -emit-glu main.bc -o -
+gluc -print-interface main.bc
 ```
 
-This should generate Glu source code similar to the original Glu program, demonstrating the reversibility of the Glu compiler and its ability to generate Glu source code from LLVM IR generated by other compilers.
+This should generate a Glu interface similar to the original Glu program, with just a single `main` function in this example.
