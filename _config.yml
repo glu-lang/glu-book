@@ -101,8 +101,6 @@ collections:
       - modules.md
       - importing_cpp.md
       - exporting_cpp.md
-      - keywords.md
-      - operators_and_symbols.md
   refs:
     output: true
     order:
@@ -110,6 +108,9 @@ collections:
       - bnf.md
       - gil.md
       - gil_ownership.md
+      - supported_files.md
+      - keywords.md
+      - operators_and_symbols.md
 
 defaults:
   - scope:

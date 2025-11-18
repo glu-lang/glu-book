@@ -4,6 +4,7 @@
 ---
 
 The following list contains keywords that are reserved for current or future use by the Glu language.
+- `and` - syntax sugar for `&&`
 - `as` - perform primitive casting, disambiguate the specific trait containing an item, or rename items in import statements
 - `break` - exit a loop
 - `continue` - continue to the next loop iteration
@@ -16,8 +17,11 @@ The following list contains keywords that are reserved for current or future use
 - `import` - allow to use a specific library
 - `in` - used in the `for` loop syntax
 - `let` - define a constant
+- `namespace` - define a namespace
+- `null` - null value
 - `or` - syntax sugar for `||`
-- `and` - syntax sugar for `&&`
+- `private` - define a private item (default visibility)
+- `public` - define a public item
 - `return` - return from a function
 - `struct` - define a data structure
 - `true` - Boolean true literal

@@ -58,18 +58,18 @@ overloadable. Operators are listed alongside their precedences.
 | `,` | `expr, expr` | Argument and elements separator | false |
 | `[]` | `expr[expr]` | Increment and dereference pointer | true |
 
-## Symbols
-The following list includes all symbols that do not act as operators,
-meaning they do not function like a call to a function.
+## Literals
+The following list includes all literals and their explanations.
 
-| Symbol | Explanation |
+| Literal | Explanation |
 |----------|----------|
-| `"..."` | String literal |
-| `'...'` | ASCII byte literal |
-| `ident::ident` | Namespace path |
-| `ident::ident` | Lib path |
-| `func ident<ident>()` | Specify a generic type for a function |
-| `path::*` | Wild card to import every modules from a path |
-| `{...}` | Bloc expression |
-| `Type {...}` | Struct literal |
-| `Type[] = {...}` | Array literal |
+| `"abc"` | String or Character literal |
+| `{...}` | Aggregate Initializer (Struct, Arrays, ...) |
+| `0b123` | Binary integer literal |
+| `0o123` | Octal integer literal |
+| `0x123` | Hexadecimal integer literal |
+| `123` | Decimal integer literal |
+| `123.45` | Floating-point literal |
+| `true` | Boolean true literal |
+| `false` | Boolean false literal |
+| `null` | Null pointer literal |
