@@ -3,7 +3,7 @@ title: Import a C++ Library in Glu
 category: Imports and Modules
 ---
 
-The Glu programming language is designed to be used in conjunction with other languages and tools. In this section, we will see how to use Glu in a project that involves multiple languages and tools.
+The Glu programming language is designed to be used in conjunction with other languages and tools. In this tutorial, we will see how to use Glu in a project that involves multiple languages and tools.
 
 ## Creating a Project Directory
 
@@ -32,7 +32,7 @@ void funcA() {
 }
 ```
 
-Save the file. This file contains a function `funcA` that we will call from Glu. Note that this file has a `.cpp` extension, which is a common convention for C++ source files.
+Save the file. This file contains a function `funcA` that we will call from Glu. Note that this file has a `.cpp` extension, which is used for C++ source files.
 
 ## Creating a Glu File
 
@@ -52,9 +52,9 @@ func main() {
 }
 ```
 
-This file imports the C++ library `liba` from the file `liba.hpp` and calls the function `funcA` from the library in the `main` function.
+This file imports the C++ library `liba` from the file `liba.cpp` and calls the function `funcA` from the library in the `main` function.
 
-The `import` statement is used to import external modules or libraries into a Glu program. In this case, we import the `liba` module, which corresponds to the C++ library defined in the `liba.hpp` file. The `::` operator is used to access functions and variables in modules.
+The `import` statement is used to import external modules or libraries into a Glu program. In this case, we import the `liba` module, which corresponds to the C++ library defined in the `liba.cpp` file. The namespace operator `::` is then used to access functions and variables in the imported module.
 
 To compile the program, run the following command in the terminal.
 
@@ -63,7 +63,7 @@ clang++ -g -c -emit-llvm liba.cpp -o liba.bc
 GLU_LINKER='clang++' gluc main.glu -o main
 ```
 
-This will create an LLVM bitcode file named `liba.bc` from the C++ header file `liba.hpp`, using the Clang compiler. The `-g` flag is used to include debugging information in the generated bitcode file, which the Glu compiler will use to import the C++ code correctly.
+This will create an LLVM bitcode file named `liba.bc` from the C++ file `liba.cpp`, using the Clang compiler. The `-g` flag is used to include debugging information in the generated bitcode file, which the Glu compiler will use to import the C++ code correctly.
 
 Then, we compile the Glu program `main.glu` using the `gluc` compiler. You could add an `-I .` flag to specify the include path, but imports are always looked up in the current directory first. Imports can be used for including bitcode files, LLVM IR files, and glu files.
 
@@ -102,3 +102,58 @@ Finally, link the LLVM bitcode files together using the Clang C++ compiler.
 # Link the LLVM bitcode files
 clang++ main.bc liba.bc -o main
 ```
+
+## Importing Namespaces and Structs
+
+C++ is a powerful language that supports namespaces and structs. Glu can import C++ namespaces and structs, allowing you to use them in your Glu programs.
+
+Just like you can import Glu namespaces and structs, the `import` statement can be used to import ones defined in C++:
+
+```cpp
+namespace math {
+    struct Point {
+        int x;
+        int y;
+
+        static Point getDefault();
+    };
+
+    int add(int a, int b);
+}
+
+int math::add(int a, int b) {
+    return a + b;
+}
+
+math::Point math::Point::getDefault() {
+    return {0, 0};
+}
+```
+
+Note that the code needs to use separate declarations and definitions, as within C++ source files, the compiler would omit unused inline definitions.
+
+You can then import the `math` namespace and use the `Point` struct and `add` function in Glu:
+
+```glu
+import cpp_file::math;
+
+func main() {
+    let p: math::Point = math::Point::getDefault();
+    let sum = math::add(5, 10);
+    std::print("Point: (" + std::intToString(p.x) + ", " + std::intToString(p.y) + ")");
+    std::print("Sum: " + std::intToString(sum));
+}
+```
+
+Note that when importing C++ namespaces, functions within structs will be considered namespaces. Non-static functions within structs will have the member variable `this` added as the first parameter, as Glu does not have member functions.
+
+## Viewing Imported Interfaces
+
+Before using an imported C++ library, it can be useful to view the interface that Glu has generated for the library. This can be done using the `-print-interface` flag in the Glu compiler.
+
+```bash
+clang++ -g -c -emit-llvm cpp_file.cpp -o cpp_file.bc
+gluc -print-interface cpp_file.bc
+```
+
+This will print the Glu interface of the imported C++ library to the terminal, allowing you to see the available functions, structs, and namespaces that can be used in your Glu program. Note that the interface may not always perfectly match the original C++ code, and might not compile in Glu as-is, but it provides a useful overview of the imported library's structure. 
