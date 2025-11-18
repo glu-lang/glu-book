@@ -28,7 +28,7 @@ let direction: Direction = Direction::NORTH;
 
 When referencing a case of an enum, you must use the double colon `::` scope resolution operator, followed by the case name.
 
-## Explicit Raw Values
+## Explicit Raw Values (Coming Soon)
 
 You can assign explicit raw values to the cases of an enum. This is useful when you want to assign specific values to each case.
 
@@ -48,7 +48,7 @@ The raw values must be unique within the enum and must match the underlying type
 
 The raw values can be of any integer type, such as `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, or `Char`.
 
-## Accessing Raw Values
+## Accessing Raw Values (Coming Soon)
 
 The raw value of an enum case can be accessed using the `rawValue` property, and enum cases can be created from raw values using initializer syntax:
 
@@ -62,7 +62,7 @@ In this example, the raw value of the `PLAYER` case is accessed using the `rawVa
 
 If you try to create an enum case from a raw value that doesn't match any of the cases, the program will throw a runtime error. This makes it safer to work with enums, as you can be sure that the raw value corresponds to a valid case. If this behavior is not desired, you can instead use an open enum.
 
-## Open Enums
+## Open Enums (Coming Soon)
 
 An open enum allows creating enum cases from raw values that don't match any of the defined cases. This can be useful when working with external data sources or when you want to allow additional cases to be added in the future.
 
@@ -104,7 +104,7 @@ let magenta: Color = Color::RED | Color::BLUE;
 
 In this example, the `magenta` variable is assigned the color magenta, which is a combination of red and blue.
 
-## Restricting Enums
+## Restricting Enums (Coming Soon)
 
 Enums can use another enum as their underlying type, which permits creating an enum that can only take a subset of the values of the underlying enum. This can be useful when you want to restrict the possible values of an enum to a specific subset.
 
