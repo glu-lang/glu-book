@@ -20,7 +20,7 @@ Below are the supported programming languages for importing LLVM Bitcode (`.bc`)
 
 ### C and C++ via Clang
 
-**Supported Versions (BC):** Clang 20
+**Supported Versions (BC):** Clang 20  
 **Supported Versions (LL):** Clang 19-20 or Apple Clang 17+
 
 For importing C and C++ source files (not header files), you need to compile them to LLVM bitcode (`.bc`) or LLVM IR (`.ll`) using Clang with debug information enabled. The following commands can be used:
@@ -38,7 +38,7 @@ clang++ -g -S -emit-llvm source.cpp -o source.ll
 
 ### Rust via rustc
 
-**Supported Versions (BC):** Rust 1.87-1.90
+**Supported Versions (BC):** Rust 1.87-1.90  
 **Supported Versions (LL):** Rust 1.82-1.90
 
 For importing Rust source files, you need to compile them to LLVM bitcode (`.bc`) or LLVM IR (`.ll`) using `rustc` with debug information enabled. The following commands can be used:
