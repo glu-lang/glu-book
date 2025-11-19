@@ -2,7 +2,7 @@
 icon: fas fa-stream
 title: The Reference
 order: 1
-categories: ['The Architecture']
+categories: ['The Architecture', 'Appendix']
 ---
 
 Below, every article explaining the architecture and the inner workings of the Glu Programming Language.
