@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/glu-lang/rouge
-  revision: 987c260d7ce34917b29602806be00b1022115664
+  revision: 63258192ed9c92d28ef9a29b182acb4a6559815b
   branch: master
   specs:
     rouge (4.3.0)

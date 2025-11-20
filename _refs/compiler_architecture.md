@@ -84,7 +84,7 @@ This will output the GIL representation of the program in a textual format. You 
 
 It should look like this:
 
-```glu
+```gil
 gil @main : $() -> Int32 {
 entry:
     %0 = alloca $String, loc "main.glu":2:9
