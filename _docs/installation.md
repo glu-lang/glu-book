@@ -39,7 +39,7 @@ git clone git@github.com:glu-lang/glu.git
 cd glu
 ```
 
-Make sure you have the necessary dependencies installed, including a C++ compiler and CMake. You need CMake, LLVM/Clang 18, Flex, and Bison installed on your system. If you need the demangler, you also need to install Rust and Cargo.
+Make sure you have the necessary dependencies installed, including a C++ compiler and CMake. You need CMake, LLVM/Clang 20, Flex, and Bison installed on your system. If you need the demangler, you also need to install Rust and Cargo.
 
 ### Configuring Build on Ubuntu
 
@@ -60,7 +60,7 @@ cmake -Bbuild -DCMAKE_BUILD_TYPE=Release
 To install dependencies on macOS, you need Xcode command line tools and Homebrew. You can install the required packages using Homebrew:
 
 ```bash
-brew install llvm@18 bison rust
+brew install llvm@20 bison rust
 ```
 
 To configure the build environment, you need to set the paths to Flex and Bison. Those depend on the paths where Xcode is installed and where Homebrew installs Bison. For most systems, you can run:
