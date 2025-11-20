@@ -46,7 +46,7 @@ Make sure you have the necessary dependencies installed, including a C++ compile
 To install dependencies on Ubuntu, you can use the following command:
 
 ```bash
-sudo apt-get install build-essential llvm-18-dev llvm-18-tools libclang-18-dev flex bison cargo
+sudo apt-get install build-essential llvm-20-dev llvm-20-tools libclang-20-dev flex bison cargo
 ```
 
 To configure the build environment, run:
