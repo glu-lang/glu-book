@@ -12,7 +12,7 @@ The easiest way to get started with Glu is by using Docker. If you don't have Do
 Once you have Docker installed, you can run the following command in your terminal to pull the Glu Docker image, start a container, and mount your current directory into the container:
 
 ```bash
-docker run -it --rm -v "$(pwd)":/workspace -w /workspace glu-lang/glu:latest /bin/bash
+docker run -it --rm -v "$(pwd)":/workspace -w /workspace ghcr.io/glu-lang/glu:latest /bin/bash
 ```
 
 This will open a bash shell inside the Glu Docker container, with your current directory mounted at `/workspace`. You can now compile and run Glu programs from within the container.
