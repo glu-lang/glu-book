@@ -36,6 +36,28 @@ clang++ -g -c -emit-llvm source.cpp -o source.bc
 clang++ -g -S -emit-llvm source.cpp -o source.ll
 ```
 
+### Odin
+  
+**Supported Versions (LL):** Odin 2025-11
+
+For importing Odin source files, you need to compile them to LLVM IR (`.ll`) using the Odin compiler with debug information enabled. The following command can be used:
+
+```bash
+# Odin to LL (Odin 2025-11)
+odin build source.odin -file -debug -build-mode:llvm-ir
+```
+
+When using the Odin standard library, it needs to be linked in manually, as follows:
+
+```bash
+# Compile Glu code
+gluc -c main.glu -o main.o
+# Remove Odin entry point if your Glu code has its own main function
+rm source-runtime-entry*.ll
+# Link Glu with Odin Standard Library
+clang main.o source-*.ll -o output_executable
+```
+
 ### Rust via rustc
 
 **Supported Versions (BC):** Rust 1.87-1.90  
@@ -49,6 +71,31 @@ rustc --crate-type=lib -g --emit=llvm-bc source.rs -o source.bc
 # Rust to LL (Rust 1.82-1.90)
 rustc --crate-type=lib -g --emit=llvm-ir source.rs -o source.ll
 ```
+
+### Swift via swiftc
+
+**Supported Versions (LL):** Swift 6.2
+
+For importing Swift source files, you need to compile them to LLVM IR (`.ll`) using the Swift compiler with debug information enabled. The following command can be used:
+
+```bash
+# Swift to LL (Swift 6.2) (remove parse-as-library if your swift file is the main file)
+swiftc -parse-as-library -emit-ir -g -gdwarf-types -module-name source source.swift -o source.ll`
+```
+
+To link with the Swift standard library, the command used depends on the platform and your Swift installation. For macOS, the Swift standard library is automatically linked by Apple Clang:
+
+```bash
+gluc main.glu -o output_executable --linker /usr/bin/clang
+```
+
+For Linux, you need to specify the name and path of the Swift standard library manually. To find the path of the Swift standard library, you can use:
+
+```bash
+swiftc -parse-as-library -module-name source source.swift -use-ld=/bin/echo
+```
+
+This will give you all the linker flags needed to link with the Swift standard library. You can then use those flags with `ld` to link your Glu code with the Swift standard library. An example can be found [here](https://github.com/glu-lang/glu/blob/main/test/functional/IRDec/Swift/import-swift.glu).
 
 ### Zig
 
