@@ -86,7 +86,7 @@ This behavior ensures that the initialization code is only executed once, the fi
 
 For `let` constants, this means that the initialization code will not be executed until the constant is actually used, and after that, it cannot change again. For `var` variables, the initialization code will be executed the first time the variable is accessed, but the variable can be modified later. If the first use of the variable is a write, the initialization code will still be executed, but the initial value will be discarded.
 
-### Eager Global Constants and Variables (Coming Soon)
+### Eager Global Constants and Variables
 
 If the initialization on first use behavior is not desired, you can use the `@eager` attribute to force the initialization of the global constant or variable at program startup:
 
@@ -104,22 +104,22 @@ func main() {
 }
 ```
 
-Note that if the value is never accessed, the initialization code will still be executed at program startup.
+Note that even if the value is never accessed, the initialization code will still be executed at program startup.
 
 Eager initialization can only be used on global `let` constants and `var` variables. It cannot be used on local variables and constants within a function.
 
 ### Compile-Time Constants (Coming Soon)
 
-Finally, you can use the `@constexpr` attribute to declare a global constant that is guaranteed to be a compile-time constant. This means that the value of the constant must be known at compile time and cannot be the result of a function call or any other runtime computation.
+Finally, you can use the `@const` attribute to declare a global constant that is guaranteed to be a compile-time constant. This means that the value of the constant must be known at compile time and cannot be the result of a non-`@const` function call or any other runtime computation.
 
 ```glu
-@constexpr let compileTimeConst: Int = 42;
+@const let compileTimeConst: Int = 42;
 ```
 
-By default, all `let` constants may be optimized as compile-time constants if the compiler can determine their value at compile time. However, using the `@constexpr` attribute explicitly indicates that the constant is intended to be a compile-time constant. If the value cannot be determined at compile time, the compiler will throw an error.
+By default, all `let` constants may be optimized as compile-time constants if the compiler can determine their value at compile time. However, using the `@const` attribute explicitly indicates that the constant is intended to be a compile-time constant. If the value cannot be determined at compile time, the compiler will throw an error.
 
-The `@constexpr` attribute can be used on all variables and constants, both global and local.
+The `@const` attribute can be used on all variables and constants, both global and local.
 
 ## Summary
 
-In summary, use the `let` keyword to declare constants and the `var` keyword to declare mutable variables. You can also declare global constants and variables outside of any function, and use attributes like `@eager` and `@constexpr` to control their initialization behavior.
+In summary, use the `let` keyword to declare constants and the `var` keyword to declare mutable variables. You can also declare global constants and variables outside of any function, and use attributes like `@eager` and `@const` to control their initialization behavior.
