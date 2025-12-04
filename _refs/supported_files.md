@@ -38,7 +38,7 @@ clang++ -g -S -emit-llvm source.cpp -o source.ll
 
 ### D via LDC
 
-**Supported Versions (BC):** LDC 1.41
+**Supported Versions (BC):** LDC 1.41  
 **Supported Versions (LL):** LDC 1.40-1.41+
 
 For importing D source files, you need to compile them to LLVM bitcode (`.bc`) or LLVM IR (`.ll`) using LDC with debug information enabled. The following commands can be used:
