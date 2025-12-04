@@ -36,6 +36,33 @@ clang++ -g -c -emit-llvm source.cpp -o source.bc
 clang++ -g -S -emit-llvm source.cpp -o source.ll
 ```
 
+### D via LDC
+
+**Supported Versions (BC):** LDC 1.41  
+**Supported Versions (LL):** LDC 1.40-1.41+
+
+For importing D source files, you need to compile them to LLVM bitcode (`.bc`) or LLVM IR (`.ll`) using LDC with debug information enabled. The following commands can be used:
+
+```bash
+# D to BC (LDC 1.41)
+ldc2 -c --output-bc -g source.d -of=source.bc
+# D to LL (LDC 1.40-1.41+)
+ldc2 -c --output-ll -g source.d -of=source.ll
+```
+
+You might want to link using `ldc2` to link with the D standard library. This can be done by compiling all of your code to object files and then linking them together with ldc2:
+
+```bash
+# Compile D code to LLVM IR
+ldc2 -c --output-ll -g source.d -of=source.ll
+# Compile Glu code
+gluc -c main.glu -o main.o
+# Compile D code to object file
+ldc2 -c --output-obj -g source.d -of=source.o
+# Link everything together
+ldc2 main.o source.o -of=output_executable
+```
+
 ### Odin
   
 **Supported Versions (LL):** Odin 2025-11
@@ -71,6 +98,7 @@ rustc --crate-type=lib -g --emit=llvm-bc source.rs -o source.bc
 # Rust to LL (Rust 1.82-1.90)
 rustc --crate-type=lib -g --emit=llvm-ir source.rs -o source.ll
 ```
+
 
 ### Swift via swiftc
 
