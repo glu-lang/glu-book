@@ -34,7 +34,7 @@ The Glu import process allows importing foreign functions and types from differe
  - **ClangImporter**: `C Header Files -> AST`: The ClangImporter stage uses Clang tooling to parse C header files and generate AST nodes for function declarations and types.
  - **ASTPrinter**: `AST -> Glu Source Code`: The AST Code Printer stage pretty prints Glu source code from the AST representation of the program (-print-interface).
 
-The Glu compiler can also automatically call the appropriate compilers to import different supported languages, and link imported functions and types into the final executable during the compilation process. See [Supported File Formats](./supported_files) for more information on supported input formats.
+The Glu compiler can also automatically call the appropriate compilers to import different supported languages, and link imported functions and types into the final executable during the compilation process. See [Supported File Formats](/supported_files) for more information on supported input formats.
 
 The Glu compiler is designed to be modular and extensible, allowing developers to easily add optimization passes to the compilation process. Each stage implemented as a separate C++ library.
 
