@@ -132,7 +132,7 @@ func ==(a: Person, b: Person) -> Bool {
 }
 ```
 
-In this example, the `==` operator is overridden to compare the fields name and age of two `Person` structures. More information about operator overloading can be found in the [Overloading Operators](./operators_overload) section.
+In this example, the `==` operator is overridden to compare the fields name and age of two `Person` structures. More information about operator overloading can be found in the [Overloading Operators](/operators_overload) section.
 
 ## Example Program with Structures
 
